@@ -1,5 +1,4 @@
 import React, { Props, useState, CSSProperties } from 'react'
-import { Cast } from './type'
 
 export interface TabProps extends Props<any> {
   name: string
@@ -8,7 +7,7 @@ export interface TabProps extends Props<any> {
 export const Tab = (props: TabProps) => <div {...props}>{props.children}</div>
 
 export interface Tabs extends Props<any> {
-  style: Cast<{ button }, CSSProperties>
+  style: Record<'button', CSSProperties>
 }
 
 export function Tabs<T>({ children, style }: Tabs) {

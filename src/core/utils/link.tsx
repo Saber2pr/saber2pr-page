@@ -20,7 +20,7 @@ export const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
   })
 }
 
-export type Link = Propsx<Application['home']['websites'], { a }>
+export type Link = Propsx<Application['home']['websites'], 'a'>
 
 export const Link = ({ props, style }: Link) => {
   return (
@@ -34,7 +34,7 @@ export const Link = ({ props, style }: Link) => {
   )
 }
 
-export type LinkImg = Propsx<Application['project'], { a; img }>
+export type LinkImg = Propsx<Application['project'], 'a' | 'img'>
 
 export const LinkImg = ({ props, style }: LinkImg) => {
   const { a, img } = style

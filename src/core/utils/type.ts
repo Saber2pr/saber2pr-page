@@ -1,9 +1,11 @@
 import { Props, CSSProperties } from 'react'
 
-export type Cast<T, K> = { [P in keyof T]: K }
+export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 
-export interface Propsx<P extends Object = {}, S extends Object = {}>
+export type Style<K extends keyof any = ''> = Record<K, CSSProperties>
+
+export interface Propsx<P extends Object = {}, K extends keyof any = ''>
   extends Props<any> {
   props?: P
-  style?: Cast<S, CSSProperties>
+  style?: Style<K>
 }

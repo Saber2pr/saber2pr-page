@@ -6,7 +6,7 @@ import { Propsx } from './utils/type'
 export const Home = ({
   props,
   style
-}: Propsx<Application['home'], { img; p; a }>) => {
+}: Propsx<Application['home'], 'img' | 'a' | 'p'>) => {
   const { title, logo, author, readME, websites } = props
   const { p, img, a } = style
   return (

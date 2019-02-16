@@ -8,7 +8,7 @@ export type EventHandle = (
 export const Anchor = ({
   props,
   style
-}: Propsx<{ href; name; over?: EventHandle; out?: EventHandle }, { a }>) => {
+}: Propsx<{ href; name; over?: EventHandle; out?: EventHandle }, 'a'>) => {
   const { href, name, over, out } = props
   const { a } = style
   return (
