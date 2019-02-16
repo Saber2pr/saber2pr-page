@@ -1,0 +1,29 @@
+{
+  "name": "saber2pr",
+  "version": "0.0.1",
+  "description": "saber2pr's webpage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saber2pr/saber2pr.git"
+  },
+  "author": "saber2pr",
+  "license": "ISC",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "node ./lib/test/test.js",
+    "start": "tsc --watch",
+    "dev": "rollup -c --watch"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  },
+  "dependencies": {
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  }
+}
