@@ -10,10 +10,9 @@
   "license": "ISC",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "node ./lib/test/test.js",
     "start": "tsc --watch",
-    "dev": "NODE_ENV='production' rollup -c --watch",
-    "build": "uglifyjs ./build/bundle.js -m -o ./build/main.js"
+    "dev": "rollup -c --watch",
+    "build": "uglifyjs ./build/bundle.js -m -o ./build/bundle.min.js"
   },
   "devDependencies": {
     "rollup": "^1.1.2",
