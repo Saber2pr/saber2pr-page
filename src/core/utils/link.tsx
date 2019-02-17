@@ -4,12 +4,12 @@ import { Propsx } from './type'
 import { style } from './style'
 import { Anchor } from './element'
 
-export const over = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
+const over = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
   style(event.target)({
     boxShadow: 'darkgrey 5px 5px 30px 5px'
   })
 
-export const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
+const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
   style(event.target)({
     boxShadow: ''
   })

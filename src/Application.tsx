@@ -33,11 +33,36 @@ const globalcss: Record<'img' | 'p' | 'a' | 'div' | 'button', CSSProperties> = {
     textDecoration: 'none'
   },
   button: {
-    color: '#2a334d',
-    backgroundColor: '#191a21',
+    width: `${100 / Object.keys(data).length}%`,
     border: '1px solid #000000',
+    borderTopLeftRadius: '5px',
+    borderTopRightRadius: '5px',
     padding: '6px 10px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    outline: 'none',
+    fontSize: '200%'
+  }
+}
+
+const tabscss: Record<
+  'active' | 'unactive',
+  Record<'button', CSSProperties>
+> = {
+  active: {
+    button: {
+      ...globalcss.button,
+      color: '#6272a4',
+      backgroundColor: '#282a36',
+      boxShadow: '#000000 -5px 5px 10px'
+    }
+  },
+  unactive: {
+    button: {
+      ...globalcss.button,
+      color: '#2a334d',
+      backgroundColor: '#191a21',
+      boxShadow: ''
+    }
   }
 }
 
@@ -75,7 +100,7 @@ const Application = ({ home, project, about }: Application) => {
   const { div } = globalcss
   return (
     <div style={div}>
-      <Tabs style={globalcss}>
+      <Tabs active={tabscss.active} unactive={tabscss.unactive}>
         <Tab name="Home">
           <Home props={home} style={globalcss} />
         </Tab>

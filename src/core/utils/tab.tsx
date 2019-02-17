@@ -1,4 +1,5 @@
 import React, { Props, useState, CSSProperties } from 'react'
+import { style } from './style'
 
 export interface TabProps extends Props<any> {
   name: string
@@ -7,19 +8,32 @@ export interface TabProps extends Props<any> {
 export const Tab = (props: TabProps) => <div {...props}>{props.children}</div>
 
 export interface Tabs extends Props<any> {
-  style: Record<'button', CSSProperties>
+  unactive?: Record<'button', CSSProperties>
+  active?: Record<'button', CSSProperties>
 }
 
-export function Tabs<T>({ children, style }: Tabs) {
+const over = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+  style(event.target)({
+    color: '#3c435e',
+    boxShadow: '#000000 -5px 5px 10px'
+  })
+
+const out = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+  style(event.target)({
+    boxShadow: ''
+  })
+
+export function Tabs<T>({ children, active, unactive }: Tabs) {
   const [cur, update] = useState(0)
-  const { button } = style
   return (
     <>
       {React.Children.map(children, (node, index) => (
         <button
-          style={{ ...button, color: index === cur ? 'red' : 'blue' }}
+          style={index === cur ? active.button : unactive.button}
           key={index}
           onClick={() => update(index)}
+          onMouseOver={over}
+          onMouseOut={out}
         >
           {(node['props'] as TabProps)['name']}
         </button>
