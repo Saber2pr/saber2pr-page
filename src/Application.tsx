@@ -115,4 +115,6 @@ const Application = ({ home, project, about }: Application) => {
   )
 }
 
-ReactDOM.render(<Application {...data} />, document.querySelector('#root'))
+const container = document.querySelector('body')
+container.setAttribute('style', 'background-color:#191a21')
+ReactDOM.render(<Application {...data} />, container)
