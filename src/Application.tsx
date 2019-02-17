@@ -5,17 +5,15 @@ import { data } from './data/data'
 import { Project } from './core/project'
 import { About } from './core/about'
 import { Tabs, Tab } from './core/utils/tab'
-import { objectCast } from './core/utils/object'
 
-const globalcss: Record<
-  'imgR' | 'p' | 'a' | 'div' | 'button',
-  CSSProperties
-> = {
+const globalcss: Record<'img' | 'p' | 'a' | 'div' | 'button', CSSProperties> = {
   div: {
-    textAlign: 'center',
-    backgroundColor: '#191a21'
+    boxShadow: '#000000 0px 5px 10px',
+    backgroundColor: '#282a36',
+    border: '1px solid #191a21',
+    textAlign: 'center'
   },
-  imgR: {
+  img: {
     width: '100px',
     borderRadius: '50%',
     overflow: 'hidden'
@@ -29,8 +27,7 @@ const globalcss: Record<
   a: {
     fontSize: '200%',
     width: '90px',
-    marginTop: '30px',
-    marginBottom: '30px',
+    lineHeight: '50px',
     borderRadius: '100%',
     color: '#6272a4',
     textDecoration: 'none'
@@ -42,6 +39,14 @@ const globalcss: Record<
     padding: '6px 10px',
     cursor: 'pointer'
   }
+}
+
+const projectcss: Record<'img' | 'a', CSSProperties> = {
+  img: {
+    width: '40%',
+    overflow: 'hidden'
+  },
+  a: globalcss.a
 }
 
 export interface Application {
@@ -64,21 +69,18 @@ export interface Application {
     name: string
     href: string
   }[]
-  style: Record<'div', CSSProperties>
 }
 
-const css_cast = objectCast(globalcss)('imgR')({ img: globalcss.imgR })
-
-const Application = ({ home, project, about, style }: Application) => {
-  const { div } = style
+const Application = ({ home, project, about }: Application) => {
+  const { div } = globalcss
   return (
     <div style={div}>
       <Tabs style={globalcss}>
         <Tab name="Home">
-          <Home props={home} style={css_cast} />
+          <Home props={home} style={globalcss} />
         </Tab>
         <Tab name="Project">
-          <Project props={project} style={css_cast} />
+          <Project props={project} style={projectcss} />
         </Tab>
         <Tab name="About">
           <About props={about} style={globalcss} />
@@ -88,7 +90,4 @@ const Application = ({ home, project, about, style }: Application) => {
   )
 }
 
-ReactDOM.render(
-  <Application {...data} style={globalcss} />,
-  document.querySelector('body')
-)
+ReactDOM.render(<Application {...data} />, document.querySelector('#root'))

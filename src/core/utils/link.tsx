@@ -4,21 +4,15 @@ import { Propsx } from './type'
 import { style } from './style'
 import { Anchor } from './element'
 
-export const over = (
-  event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-) => {
-  event.target['style']['color'] = 'red'
+export const over = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
   style(event.target)({
-    color: 'red'
+    boxShadow: 'darkgrey 5px 5px 30px 5px'
   })
-}
 
-export const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-  event.target['style']['color'] = 'blue'
+export const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
   style(event.target)({
-    color: 'blue'
+    boxShadow: ''
   })
-}
 
 export type Link = Propsx<Application['home']['websites'], 'a'>
 
