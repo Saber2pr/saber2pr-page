@@ -4,7 +4,7 @@
 
 ```bash
 # from npm
-npm install saber2pr
+npm install saber2pr-page
 
 # from github
 git clone https://github.com/Saber2pr/saber2pr.git
