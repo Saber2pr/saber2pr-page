@@ -8,7 +8,11 @@ export default {
     file: 'build/bundle.js',
     format: 'iife',
     name: 'saber2pr',
-    banner: `var process = {env:{NODE_ENV: 'production'}}`
+    banner: `var process = {
+      env: {
+        NODE_ENV: 'production'
+      }
+    }`
   },
   watch: {
     include: 'lib/**'

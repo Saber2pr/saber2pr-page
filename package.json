@@ -12,14 +12,17 @@
   "scripts": {
     "test": "node ./lib/test/test.js",
     "start": "tsc --watch",
-    "dev": "rollup -c --watch"
+    "dev": "NODE_ENV='production' rollup -c --watch",
+    "build": "uglifyjs ./build/bundle.js -m -o ./build/main.js"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "rollup": "^1.1.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.1",
+    "uglify-js": "^3.4.9"
   },
   "dependencies": {
     "@types/react": "^16.8.3",

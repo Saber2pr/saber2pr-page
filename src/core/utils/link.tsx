@@ -19,9 +19,9 @@ export type Link = Propsx<Application['home']['websites'], 'a'>
 export const Link = ({ props, style }: Link) => {
   return (
     <>
-      {props.map(({ name, href }) => (
-        <div>
-          <Anchor props={{ name, href, out, over }} style={style} />
+      {props.map(({ name, href }, index) => (
+        <div key={index}>
+          <Anchor props={{ name, href, out, over }} style={style} key={index} />
         </div>
       ))}
     </>
@@ -34,13 +34,17 @@ export const LinkImg = ({ props, style }: LinkImg) => {
   const { a, img } = style
   return (
     <>
-      {props.map(({ name, href, src }) => (
+      {props.map(({ name, href, src }, index) => (
         <>
-          <div>
-            <Anchor props={{ name, href, out, over }} style={{ a }} />
+          <div key={index}>
+            <Anchor
+              props={{ name, href, out, over }}
+              style={{ a }}
+              key={index}
+            />
           </div>
-          <div>
-            <img src={src} alt={name} style={img} />
+          <div key={index}>
+            <img src={src} alt={name} style={img} key={index} />
           </div>
         </>
       ))}
