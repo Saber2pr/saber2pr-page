@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom'
 import React, { CSSProperties } from 'react'
+const data = require('../src/data/data.json')
 import { Home } from './core/home'
-import { data } from './data/data'
 import { Project } from './core/project'
 import { About } from './core/about'
 import { Tabs, Tab } from './core/utils/tab'

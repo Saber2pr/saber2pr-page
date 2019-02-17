@@ -12,15 +12,22 @@ export interface Tabs extends Props<any> {
   active?: Record<'button', CSSProperties>
 }
 
-const over = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+const over = (active: CSSProperties) => (
+  event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+) =>
   style(event.target)({
-    color: '#3c435e',
-    boxShadow: '#000000 -5px 5px 10px'
+    color: active.color,
+    boxShadow: active.boxShadow
   })
 
-const out = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+const out = (
+  isactive: boolean,
+  active: CSSProperties,
+  unactive: CSSProperties
+) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
   style(event.target)({
-    boxShadow: ''
+    color: isactive ? active.color : unactive.color,
+    boxShadow: isactive ? active.boxShadow : unactive.boxShadow
   })
 
 export function Tabs<T>({ children, active, unactive }: Tabs) {
@@ -32,8 +39,8 @@ export function Tabs<T>({ children, active, unactive }: Tabs) {
           style={index === cur ? active.button : unactive.button}
           key={index}
           onClick={() => update(index)}
-          onMouseOver={over}
-          onMouseOut={out}
+          onMouseOver={over(active.button)}
+          onMouseOut={out(index === cur, active.button, unactive.button)}
         >
           {(node['props'] as TabProps)['name']}
         </button>
