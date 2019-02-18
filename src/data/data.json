@@ -74,13 +74,17 @@
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/XM_JUMP.jpg"
     }
   ],
-  "about": [{
-      "name": "saber2pr@gmail.com",
-      "href": "https://saber2pr@gmail.com"
-    },
-    {
-      "name": "1029985799@qq.com",
-      "href": "https://1029985799@qq.com"
-    }
-  ]
+  "about": {
+    "title": "说明",
+    "content": "这是一个用来组织和导航saber2pr的Repositories的页面，使用react（16.8.2）编写。语言为React-Typescript（tsx），层叠样式表为css in js。采用函数组件，状态更新使用React-Hooks，",
+    "links": [{
+        "name": "saber2pr@gmail.com",
+        "href": "https://saber2pr@gmail.com"
+      },
+      {
+        "name": "1029985799@qq.com",
+        "href": "https://1029985799@qq.com"
+      }
+    ]
+  }
 }

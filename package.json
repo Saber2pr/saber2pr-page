@@ -12,7 +12,7 @@
   "scripts": {
     "start": "tsc --watch",
     "dev": "rollup -c --watch",
-    "build": "uglifyjs ./build/bundle.js -m -o ./build/bundle.min.js"
+    "build": "uglifyjs ./build/bundle.min.js -o ./build/bundle.min.js -m -c"
   },
   "devDependencies": {
     "rollup": "^1.1.2",
