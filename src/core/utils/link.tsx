@@ -21,13 +21,13 @@ export const Link = ({ props, style }: Link) => {
 export type LinkImg = Propsx<Application['project'], 'a' | 'img' | 'p' | 'div'>
 
 export const LinkImg = ({ props, style }: LinkImg) => {
-  const { a, img, p, div } = style
+  const { img, p } = style
   return (
     <>
       {props.map(({ name, href, src, infor }, index) => (
-        <Columns props={{ size: 3 }} style={{ div }}>
+        <Columns props={{ size: 3 }} style={style}>
           <div>
-            <Anchor props={{ name, href }} style={{ a }} key={index} />
+            <Anchor props={{ name, href }} style={style} key={index} />
           </div>
           <div>
             <img src={src} alt={name} style={img} key={index} />

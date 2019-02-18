@@ -79,9 +79,10 @@ export const tabscss: Record<
   }
 }
 
-export const projectcss: Style<'img' | 'a' | 'p' | 'div'> = {
+export const projectcss: Style<'img' | 'a' | 'p' | 'div' | 'input'> = {
   div: {
-    marginTop: '30px'
+    marginTop: '50px',
+    marginBottom: '50px'
   },
   img: {
     width: '40%'
@@ -96,6 +97,9 @@ export const projectcss: Style<'img' | 'a' | 'p' | 'div'> = {
     width: '70%',
     margin: '30px auto',
     lineHeight: '150%'
+  },
+  input: {
+    marginTop: '50px'
   }
 }
 

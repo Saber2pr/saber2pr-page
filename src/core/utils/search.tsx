@@ -1,8 +1,10 @@
 import React, { Props } from 'react'
 import { Application } from '../../Application'
+import { Style } from './type'
 
 export interface Search extends Props<any> {
   props: Application['project']
+  style: Style<'input'>
   onChange: (value: Application['project']) => void
 }
 
@@ -10,10 +12,30 @@ function find<T>(array: T[], rule: (value: T) => boolean) {
   return array.reduce<T[]>((res, n) => (rule(n) ? res.concat(n) : res), [])
 }
 
-export const Search = ({ props, onChange }: Search) => {
+const onFocus = (defaultValue: string) => (
+  event: React.FocusEvent<HTMLInputElement>
+) => {
+  if (event.target.value === defaultValue) {
+    event.target.value = ''
+  } else {
+    return
+  }
+}
+
+export const Search = ({ props, onChange, style }: Search) => {
+  const { input } = style
   const findProp = (keyword: string) =>
     find(props, value => !!value.name.match(keyword))
   const change = (event: React.ChangeEvent<HTMLInputElement>) =>
     onChange(findProp(event.target.value))
-  return <input type="text" style={{ marginTop: '30px' }} onChange={change} />
+  const defaultValue = 'search...'
+  return (
+    <input
+      type="text"
+      style={input}
+      onChange={change}
+      onFocus={onFocus(defaultValue)}
+      defaultValue={defaultValue}
+    />
+  )
 }
