@@ -22,6 +22,16 @@ const onFocus = (defaultValue: string) => (
   }
 }
 
+const onBlur = (defaultValue: string) => (
+  event: React.FocusEvent<HTMLInputElement>
+) => {
+  if (event.target.value === '') {
+    event.target.value = defaultValue
+  } else {
+    return
+  }
+}
+
 export const Search = ({ props, onChange, style }: Search) => {
   const { input } = style
   const findProp = (keyword: string) =>
@@ -35,6 +45,7 @@ export const Search = ({ props, onChange, style }: Search) => {
       style={input}
       onChange={change}
       onFocus={onFocus(defaultValue)}
+      onBlur={onBlur(defaultValue)}
       defaultValue={defaultValue}
     />
   )

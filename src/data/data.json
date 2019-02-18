@@ -25,72 +25,72 @@
       "name": "2048",
       "href": "https://saber2pr.github.io/MyWeb/build/2048/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/2048.jpg",
-      "infor": "this is infor."
+      "infor": "a webgame."
     },
     {
       "name": "EdgeJudge",
       "href": "https://saber2pr.github.io/MyWeb/build/EdgeJudge/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/edgejudge.jpg",
-      "infor": "this is infor."
+      "infor": "a Collision test."
     },
     {
       "name": "ccc-bullet",
       "href": "https://saber2pr.github.io/MyWeb/build/ccc-bullet/build/web-mobile/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/ccc-bullet.jpg",
-      "infor": "this is infor."
+      "infor": "a shootGame demo."
     },
     {
       "name": "colliBar",
       "href": "https://saber2pr.github.io/MyWeb/build/collisionBar/build/web-mobile/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/colliBar.jpg",
-      "infor": "this is infor."
+      "infor": "a PhysCollision test"
     },
     {
       "name": "HouseBlocks",
       "href": "https://saber2pr.github.io/HouseBlocks/HouseBlocks_CocosCreator/build/web-mobile0.1/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/newHouseBlocks.jpg",
-      "infor": "this is infor."
+      "infor": "a webgame."
     },
     {
       "name": "csvTochat",
       "href": "https://saber2pr.github.io/csvToChart/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/csvToChartView.jpg",
-      "infor": "this is infor."
+      "infor": "a webTool for excel."
     },
     {
       "name": "CameraIdea",
       "href": "https://saber2pr.github.io/CocosCreatorExam/CameraIdea/build/web-mobile/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/camera.gif",
-      "infor": "this is infor."
+      "infor": "a cocoscreator demo."
     },
     {
       "name": "RandPlat",
       "href": "https://saber2pr.github.io/CocosCreatorExam/RandPlat/build/web-mobile/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/RandPlat.jpg",
-      "infor": "this is infor."
+      "infor": "a rand-gift test."
     },
     {
       "name": "ComputerBattle",
       "href": "https://saber2pr.github.io/ComputerBattle/build/web-mobile/",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/CompView.gif",
-      "infor": "this is infor."
+      "infor": "a webgame."
     },
     {
       "name": "imageToCode",
       "href": "https://github.com/Saber2pr/openCvImageTransformer",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/badapple.jpg",
-      "infor": "this is infor."
+      "infor": "an opencv-demo."
     },
     {
       "name": "XmJUMP",
       "href": "https://github.com/Saber2pr/XM_JUMP",
       "src": "https://github.com/Saber2pr/MyWeb/raw/master/resource/XM_JUMP.jpg",
-      "infor": "this is infor."
+      "infor": "cocos2dx demo."
     }
   ],
   "about": {
     "title": "说明",
-    "content": "这是一个用来组织和导航saber2pr/Repositories的页面。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染。项目的单元工具（utils）已经同步到npm。",
+    "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染。项目的单元工具（utils）已经同步到npm。",
     "more": "更多信息请移步github.com/Saber2pr/saber2pr。",
     "contact": "联系",
     "links": [{
