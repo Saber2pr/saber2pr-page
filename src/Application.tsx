@@ -8,6 +8,9 @@ import { globalcss, tabscss, projectcss, aboutcss, data } from './css'
 import { style } from './core/utils/style'
 
 export interface Application {
+  common: {
+    footer: string
+  }
   home: {
     title: string
     logo: string
@@ -34,11 +37,12 @@ export interface Application {
   }
 }
 
-const Application = ({ home, project, about }: Application) => {
+const Application = ({ home, project, about, common }: Application) => {
+  const { footer } = common
   const { div } = globalcss
   return (
     <div style={div}>
-      <Tabs active={tabscss.active} unactive={tabscss.unactive}>
+      <Tabs active={tabscss.active} unactive={tabscss.unactive} bottom={footer}>
         <Tab name="Home">
           <Home props={home} style={globalcss} />
         </Tab>

@@ -8,8 +8,9 @@ export interface TabProps extends Props<any> {
 export const Tab = (props: TabProps) => <div {...props}>{props.children}</div>
 
 export interface Tabs extends Props<any> {
-  unactive?: Record<'button', CSSProperties>
-  active?: Record<'button', CSSProperties>
+  unactive?: Record<'button' | 'bottom', CSSProperties>
+  active?: Record<'button' | 'bottom', CSSProperties>
+  bottom?: string
 }
 
 const over = (active: CSSProperties) => (
@@ -30,7 +31,7 @@ const out = (
     boxShadow: isactive ? active.boxShadow : unactive.boxShadow
   })
 
-export function Tabs<T>({ children, active, unactive }: Tabs) {
+export function Tabs<T>({ children, active, unactive, bottom }: Tabs) {
   const [cur, update] = useState(0)
   return (
     <>
@@ -44,7 +45,10 @@ export function Tabs<T>({ children, active, unactive }: Tabs) {
         >
           {(node['props'] as TabProps)['name']}
         </button>
-      )).concat(children[cur] || children)}
+      ))
+        .concat(children[cur] || children)
+        .concat(<hr style={{ color: '#944a73c0' }} />)
+        .concat(<div style={active.bottom}>{bottom}</div>)}
     </>
   )
 }
