@@ -27,7 +27,7 @@ export const globalcss: Style<
     color: '#f8ebc3'
   },
   a: {
-    fontSize: '200%',
+    fontSize: '150%',
     width: '90px',
     lineHeight: '50px',
     borderRadius: '100%',
@@ -42,11 +42,12 @@ export const globalcss: Style<
     padding: '6px 10px',
     cursor: 'pointer',
     outline: 'none',
-    fontSize: '200%'
+    fontSize: '150%'
   },
   bottom: {
     color: '#2a334d',
-    fontSize: '200%'
+    fontSize: '100%',
+    marginBottom: '10px'
   },
   hr: {
     color: '#944a73c0'
@@ -108,7 +109,8 @@ export const aboutcss: Style<'p' | 'a'> = {
     ...globalcss.p,
     width: '70%',
     margin: '30px auto',
-    lineHeight: '150%'
+    lineHeight: '160%',
+    fontSize: '100%'
   },
   a: globalcss.a
 }

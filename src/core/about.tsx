@@ -13,7 +13,7 @@ export const About = ({ props, style }: About) => {
       <h1 style={p}>{title}</h1>
       <p style={p}>{content}</p>
       <p style={p}>{more}</p>
-      <h1 style={p}>{contact}</h1>
+      <p style={p}>{contact}</p>
       <Link props={links} style={style} />
     </>
   )
