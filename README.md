@@ -1,6 +1,6 @@
 # saber2pr
 
-> saber2pr's webpage
+> saber2pr's webpage [view](https://saber2pr.github.io/saber2pr/index.html)
 
 ```bash
 # from npm
