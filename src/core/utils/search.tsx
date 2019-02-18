@@ -1,6 +1,6 @@
 import React, { Props } from 'react'
-import { Application } from '../../Application'
 import { Style } from './type'
+import { Application } from '../../type'
 
 export interface Search extends Props<any> {
   props: Application['project']

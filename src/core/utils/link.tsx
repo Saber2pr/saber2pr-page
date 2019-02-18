@@ -1,8 +1,8 @@
 import React from 'react'
-import { Application } from '../../Application'
 import { Propsx } from './type'
 import { Anchor } from './anchor'
 import { Columns } from './column'
+import { Application } from '../../type'
 
 export type Link = Propsx<Application['home']['websites'], 'a'>
 

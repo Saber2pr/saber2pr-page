@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Application } from '../Application'
 import { LinkImg } from './utils/link'
 import { Propsx } from './utils/type'
 import { Columns } from './utils/column'
 import { Search } from './utils/search'
+import { Application } from '../type'
 
 type Project = Propsx<
   Application['project'],

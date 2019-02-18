@@ -6,38 +6,7 @@ import { About } from './core/about'
 import { Tabs, Tab } from './core/utils/tab'
 import { globalcss, tabscss, projectcss, aboutcss, data } from './css'
 import { style } from './core/utils/style'
-
-export interface Application {
-  common: {
-    footer: string
-  }
-  home: {
-    title: string
-    logo: string
-    author: string
-    readME: string
-    websites: {
-      name: string
-      href: string
-    }[]
-  }
-  project: {
-    name: string
-    href: string
-    src: string
-    infor: string
-  }[]
-  about: {
-    title: string
-    content: string
-    more: string
-    contact: string
-    links: {
-      name: string
-      href: string
-    }[]
-  }
-}
+import { Application } from './type'
 
 const Application = ({ home, project, about, common }: Application) => {
   const { footer } = common

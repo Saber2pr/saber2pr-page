@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from './utils/link'
-import { Application } from '../Application'
 import { Propsx } from './utils/type'
+import { Application } from '../type'
 
 type Home = Propsx<Application['home'], 'img' | 'a' | 'p'>
 
