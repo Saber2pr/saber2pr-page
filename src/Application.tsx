@@ -25,10 +25,12 @@ export interface Application {
     name: string
     href: string
     src: string
+    infor: string
   }[]
   about: {
     title: string
     content: string
+    more: string
     contact: string
     links: {
       name: string

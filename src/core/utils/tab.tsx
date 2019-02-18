@@ -1,5 +1,6 @@
 import React, { Props, useState, CSSProperties } from 'react'
 import { style } from './style'
+import { Style } from './type'
 
 export interface TabProps extends Props<any> {
   name: string
@@ -8,8 +9,8 @@ export interface TabProps extends Props<any> {
 export const Tab = (props: TabProps) => <div {...props}>{props.children}</div>
 
 export interface Tabs extends Props<any> {
-  unactive?: Record<'button' | 'bottom', CSSProperties>
-  active?: Record<'button' | 'bottom', CSSProperties>
+  unactive?: Style<'button' | 'bottom' | 'hr'>
+  active?: Style<'button' | 'bottom' | 'hr'>
   bottom?: string
 }
 
@@ -47,7 +48,7 @@ export function Tabs<T>({ children, active, unactive, bottom }: Tabs) {
         </button>
       ))
         .concat(children[cur] || children)
-        .concat(<hr style={{ color: '#944a73c0' }} />)
+        .concat(<hr style={active.hr} />)
         .concat(<div style={active.bottom}>{bottom}</div>)}
     </>
   )

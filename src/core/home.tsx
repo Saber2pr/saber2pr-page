@@ -3,10 +3,9 @@ import { Link } from './utils/link'
 import { Application } from '../Application'
 import { Propsx } from './utils/type'
 
-export const Home = ({
-  props,
-  style
-}: Propsx<Application['home'], 'img' | 'a' | 'p'>) => {
+type Home = Propsx<Application['home'], 'img' | 'a' | 'p'>
+
+export const Home = ({ props, style }: Home) => {
   const { title, logo, author, readME, websites } = props
   const { p, img, a } = style
   return (

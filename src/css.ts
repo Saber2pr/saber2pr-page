@@ -1,11 +1,10 @@
-import { CSSProperties } from 'react'
+import { Style } from './core/utils/type'
 export const data = require('../src/data/data.json')
 
 const tabsLength = Object.keys(data).length - 1
 
-export const globalcss: Record<
-  'img' | 'p' | 'a' | 'div' | 'button' | 'body' | 'bottom',
-  CSSProperties
+export const globalcss: Style<
+  'img' | 'p' | 'a' | 'div' | 'button' | 'body' | 'bottom' | 'hr'
 > = {
   body: {
     backgroundColor: '#191a21'
@@ -48,12 +47,15 @@ export const globalcss: Record<
   bottom: {
     color: '#2a334d',
     fontSize: '200%'
+  },
+  hr: {
+    color: '#944a73c0'
   }
 }
 
 export const tabscss: Record<
   'active' | 'unactive',
-  Record<'button' | 'bottom', CSSProperties>
+  Style<'button' | 'bottom' | 'hr'>
 > = {
   active: {
     button: {
@@ -62,7 +64,8 @@ export const tabscss: Record<
       backgroundColor: '#282a36',
       boxShadow: '#000000 -5px 5px 10px'
     },
-    bottom: globalcss.bottom
+    bottom: globalcss.bottom,
+    hr: globalcss.hr
   },
   unactive: {
     button: {
@@ -71,24 +74,37 @@ export const tabscss: Record<
       backgroundColor: '#191a21',
       boxShadow: ''
     },
-    bottom: globalcss.bottom
+    bottom: globalcss.bottom,
+    hr: globalcss.hr
   }
 }
 
-export const projectcss: Record<'img' | 'a', CSSProperties> = {
-  img: {
-    width: '40%',
-    overflow: 'hidden'
+export const projectcss: Style<'img' | 'a' | 'p' | 'div'> = {
+  div: {
+    marginTop: '30px'
   },
-  a: globalcss.a
+  img: {
+    width: '40%'
+  },
+  a: {
+    ...globalcss.a,
+    fontSize: '100%'
+  },
+  p: {
+    ...globalcss.p,
+    fontSize: '100%',
+    width: '70%',
+    margin: '30px auto',
+    lineHeight: '150%'
+  }
 }
 
-export const aboutcss: Record<'p' | 'a', CSSProperties> = {
+export const aboutcss: Style<'p' | 'a'> = {
   p: {
     ...globalcss.p,
     width: '70%',
     margin: '30px auto',
-    lineHeight: '130%'
+    lineHeight: '150%'
   },
   a: globalcss.a
 }

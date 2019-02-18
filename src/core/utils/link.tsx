@@ -1,18 +1,8 @@
 import React from 'react'
 import { Application } from '../../Application'
 import { Propsx } from './type'
-import { style } from './style'
-import { Anchor } from './element'
-
-const over = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
-  style(event.target)({
-    boxShadow: 'darkgrey 5px 5px 30px 5px'
-  })
-
-const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
-  style(event.target)({
-    boxShadow: ''
-  })
+import { Anchor } from './anchor'
+import { Columns } from './column'
 
 export type Link = Propsx<Application['home']['websites'], 'a'>
 
@@ -21,32 +11,31 @@ export const Link = ({ props, style }: Link) => {
     <>
       {props.map(({ name, href }, index) => (
         <div key={index}>
-          <Anchor props={{ name, href, out, over }} style={style} key={index} />
+          <Anchor props={{ name, href }} style={style} key={index} />
         </div>
       ))}
     </>
   )
 }
 
-export type LinkImg = Propsx<Application['project'], 'a' | 'img'>
+export type LinkImg = Propsx<Application['project'], 'a' | 'img' | 'p' | 'div'>
 
 export const LinkImg = ({ props, style }: LinkImg) => {
-  const { a, img } = style
+  const { a, img, p, div } = style
   return (
     <>
-      {props.map(({ name, href, src }, index) => (
-        <>
-          <div key={index}>
-            <Anchor
-              props={{ name, href, out, over }}
-              style={{ a }}
-              key={index}
-            />
+      {props.map(({ name, href, src, infor }, index) => (
+        <Columns props={{ size: 3 }} style={{ div }}>
+          <div>
+            <Anchor props={{ name, href }} style={{ a }} key={index} />
           </div>
-          <div key={index}>
+          <div>
             <img src={src} alt={name} style={img} key={index} />
           </div>
-        </>
+          <div>
+            <p style={p}>{infor}</p>
+          </div>
+        </Columns>
       ))}
     </>
   )
