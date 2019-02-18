@@ -107,7 +107,7 @@ export const projectcss: Style<'img' | 'a' | 'p' | 'div' | 'input'> = {
 export const aboutcss: Style<'p' | 'a'> = {
   p: {
     ...globalcss.p,
-    width: '70%',
+    width: '80%',
     margin: '30px auto',
     lineHeight: '160%',
     fontSize: '100%'
