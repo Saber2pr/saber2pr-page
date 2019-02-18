@@ -26,6 +26,7 @@ export interface Application {
   about: {
     title: string
     content: string
+    contact: string
     links: {
       name: string
       href: string
