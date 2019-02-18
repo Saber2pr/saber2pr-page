@@ -2,9 +2,12 @@ import { CSSProperties } from 'react'
 export const data = require('../src/data/data.json')
 
 export const globalcss: Record<
-  'img' | 'p' | 'a' | 'div' | 'button',
+  'img' | 'p' | 'a' | 'div' | 'button' | 'body',
   CSSProperties
 > = {
+  body: {
+    backgroundColor:'#191a21'
+  },
   div: {
     boxShadow: '#000000 0px 5px 10px',
     backgroundColor: '#282a36',

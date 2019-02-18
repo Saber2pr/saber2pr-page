@@ -5,6 +5,7 @@ import { Project } from './core/project'
 import { About } from './core/about'
 import { Tabs, Tab } from './core/utils/tab'
 import { globalcss, tabscss, projectcss, aboutcss, data } from './css'
+import { style } from './core/utils/style'
 
 export interface Application {
   home: {
@@ -51,6 +52,7 @@ const Application = ({ home, project, about }: Application) => {
   )
 }
 
-const container = document.querySelector('body')
-container.setAttribute('style', 'background-color:#191a21')
-ReactDOM.render(<Application {...data} />, container)
+ReactDOM.render(
+  <Application {...data} />,
+  style(document.querySelector('body'))(globalcss.body)
+)

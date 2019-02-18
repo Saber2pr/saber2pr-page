@@ -76,7 +76,7 @@
   ],
   "about": {
     "title": "说明",
-    "content": "这是一个用来组织和导航saber2pr的Repositories的页面，使用react（16.8.2）编写。语言为React-Typescript（tsx），层叠样式表为css in js。采用函数组件，状态更新使用React-Hooks，",
+    "content": "这是一个用来组织和导航saber2pr的Repositories的页面，使用react（16.8.2）编写。语言为React-Typescript（tsx），层叠样式表为css in js。采用函数组件，状态更新使用React-Hooks，tab导航原理为props.children动态更新，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影。项目的单元工具（utils）已经同步到npm。",
     "links": [{
         "name": "saber2pr@gmail.com",
         "href": "https://saber2pr@gmail.com"
