@@ -7,7 +7,7 @@ import { Application } from '../type'
 
 type Project = Propsx<
   Application['project'],
-  'a' | 'img' | 'p' | 'div' | 'input'
+  'a' | 'img' | 'p' | 'div' | 'input' | 'button'
 >
 
 export const Project = ({ props, style }: Project) => {

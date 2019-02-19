@@ -4,9 +4,10 @@ import { Home } from './core/home'
 import { Project } from './core/project'
 import { About } from './core/about'
 import { Tabs, Tab } from './core/utils/tab'
-import { globalcss, tabscss, projectcss, aboutcss, data } from './css'
+import { globalcss, tabscss, projectcss, aboutcss } from './css/css'
 import { style } from './core/utils/style'
 import { Application } from './type'
+const data = require('../src/data/data.json')
 
 const Application = ({ home, project, about, common }: Application) => {
   const { footer } = common

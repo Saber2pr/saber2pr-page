@@ -9,7 +9,7 @@ export interface Columns extends Props<any> {
 }
 
 export const Columns = ({ props, children, style }: Columns) => {
-  const size = props.size || 2
+  const size = props.size || 1
   const { div } = style
   return (
     <div
