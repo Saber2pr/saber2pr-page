@@ -52,6 +52,7 @@ export const blogcss: Style<'div' | 'hr' | 'button' | 'input' | 'a' | 'p'> = {
   },
   p: {
     ...globalcss.p,
-    fontSize: '90%'
+    fontSize: '90%',
+    color: '#799cb9'
   }
 }

@@ -8,6 +8,7 @@ import { About } from './core/about'
 import { style } from './core/utils/style'
 import { Application } from './type'
 import { globalcss, tabscss, projectcss, aboutcss, blogcss } from './css/css'
+import { homecss } from './css/homecss'
 const data = require('../src/data/data.json')
 
 const Application = ({ home, project, blog, about, common }: Application) => {
@@ -17,7 +18,7 @@ const Application = ({ home, project, blog, about, common }: Application) => {
     <div style={div}>
       <Tabs active={tabscss.active} unactive={tabscss.unactive} bottom={footer}>
         <Tab name="Home">
-          <Home props={home} style={globalcss} />
+          <Home props={home} style={homecss} />
         </Tab>
         <Tab name="Blog">
           <Blog props={blog} style={blogcss} />

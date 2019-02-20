@@ -6,7 +6,7 @@ export const aboutcss: Style<'p' | 'a'> = {
     ...globalcss.p,
     width: '80%',
     margin: '30px auto',
-    fontSize: '100%'
+    fontSize: '95%'
   },
   a: globalcss.a
 }
