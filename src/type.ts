@@ -18,6 +18,11 @@ export interface Application {
     src: string
     infor: string
   }[]
+  blog: {
+    name: string
+    type: 'cocos' | 'react'
+    content: string
+  }[]
   about: {
     title: string
     content: string

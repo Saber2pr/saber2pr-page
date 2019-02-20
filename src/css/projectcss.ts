@@ -9,7 +9,7 @@ export const projectcss: Style<
     marginBottom: '50px'
   },
   img: {
-    width: '40%'
+    width: '80%'
   },
   a: {
     ...globalcss.a,

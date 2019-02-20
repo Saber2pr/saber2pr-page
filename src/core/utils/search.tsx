@@ -1,14 +1,13 @@
 import React, { Props } from 'react'
 import { Style } from './type'
-import { Application } from '../../type'
 
-export interface Search extends Props<any> {
-  props: Application['project']
+export interface Search<T extends { name: string }> extends Props<any> {
+  props: T[]
   style: Style<'input'>
-  onChange: (value: Application['project']) => void
+  onChange: (value: T[]) => void
 }
 
-function find<T>(array: T[], rule: (value: T) => boolean) {
+export function find<T>(array: T[], rule: (value: T) => boolean) {
   return array.reduce<T[]>((res, n) => (rule(n) ? res.concat(n) : res), [])
 }
 
@@ -32,7 +31,11 @@ const onBlur = (defaultValue: string) => (
   }
 }
 
-export const Search = ({ props, onChange, style }: Search) => {
+export function Search<T extends { name: string }>({
+  props,
+  onChange,
+  style
+}: Search<T>) {
   const { input } = style
   const findProp = (keyword: string) =>
     find(props, value => !!value.name.match(keyword))

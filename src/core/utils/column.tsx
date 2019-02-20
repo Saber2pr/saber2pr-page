@@ -4,6 +4,7 @@ import { Style } from './type'
 export interface Columns extends Props<any> {
   props: {
     size?: number
+    col?: string
   }
   style: Style<'div'>
 }
@@ -16,7 +17,7 @@ export const Columns = ({ props, children, style }: Columns) => {
       style={{
         ...div,
         display: 'grid',
-        gridTemplateColumns: ` ${100 / size}% `.repeat(size)
+        gridTemplateColumns: props.col || ` ${100 / size}% `.repeat(size)
       }}
     >
       {children}

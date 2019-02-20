@@ -1,7 +1,8 @@
 src/
 lib/test/
+lib/css
+lib/data/
 lib/Application.*
-lib/css.*
 build/
 tsconfig.json
 rollup.config.js

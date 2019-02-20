@@ -1,15 +1,16 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
+import { Tabs, Tab } from './core/utils/tab'
 import { Home } from './core/home'
 import { Project } from './core/project'
+import { Blog } from './core/blog'
 import { About } from './core/about'
-import { Tabs, Tab } from './core/utils/tab'
-import { globalcss, tabscss, projectcss, aboutcss } from './css/css'
 import { style } from './core/utils/style'
 import { Application } from './type'
+import { globalcss, tabscss, projectcss, aboutcss, blogcss } from './css/css'
 const data = require('../src/data/data.json')
 
-const Application = ({ home, project, about, common }: Application) => {
+const Application = ({ home, project, blog, about, common }: Application) => {
   const { footer } = common
   const { div } = globalcss
   return (
@@ -17,6 +18,9 @@ const Application = ({ home, project, about, common }: Application) => {
       <Tabs active={tabscss.active} unactive={tabscss.unactive} bottom={footer}>
         <Tab name="Home">
           <Home props={home} style={globalcss} />
+        </Tab>
+        <Tab name="Blog">
+          <Blog props={blog} style={blogcss} />
         </Tab>
         <Tab name="Project">
           <Project props={project} style={projectcss} />

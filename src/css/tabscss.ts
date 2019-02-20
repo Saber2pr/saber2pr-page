@@ -1,7 +1,7 @@
 import { Style } from '../core/utils/type'
 import { globalcss } from './globalcss'
 
-const tabsLength = 3
+const tabsLength = 4
 const tabswidth = `${100 / tabsLength}%`
 
 const common: Style<'button' | 'bottom' | 'hr'> = {
