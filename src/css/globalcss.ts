@@ -48,7 +48,7 @@ export const globalcss: Style<
     color: '#944a73c0'
   },
   input: {
-    marginTop: '50px',
+    marginTop: '30px',
     backgroundColor: '#191a21',
     color: '#2a334d',
     border: '1px solid #282a36'

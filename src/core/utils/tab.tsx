@@ -1,7 +1,7 @@
-import React, { Props, useState, CSSProperties } from 'react'
-import { style } from './style'
+import React, { Props, useState } from 'react'
 import { Style } from './type'
 import { Columns } from './column'
+import { Button } from './button'
 
 export interface TabProps extends Props<any> {
   name: string
@@ -15,38 +15,20 @@ export interface Tabs extends Props<any> {
   bottom?: string
 }
 
-const over = (active: CSSProperties) => (
-  event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-) =>
-  style(event.target)({
-    color: active.color,
-    boxShadow: active.boxShadow
-  })
-
-const out = (
-  isactive: boolean,
-  active: CSSProperties,
-  unactive: CSSProperties
-) => (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-  style(event.target)({
-    color: isactive ? active.color : unactive.color,
-    boxShadow: isactive ? active.boxShadow : unactive.boxShadow
-  })
-
 export function Tabs<T>({ children, active, unactive, bottom }: Tabs) {
   const [cur, update] = useState(0)
   return (
     <>
       {React.Children.map(children, (node, index) => (
-        <button
+        <Button
           style={index === cur ? active.button : unactive.button}
           key={index}
           onClick={() => update(index)}
-          onMouseOver={over(active.button)}
-          onMouseOut={out(index === cur, active.button, unactive.button)}
-        >
-          {(node['props'] as TabProps)['name']}
-        </button>
+          activeStyle={active.button}
+          unactiveStyle={unactive.button}
+          name={(node['props'] as TabProps)['name']}
+          isactive={index === cur}
+        />
       ))
         .concat(children[cur] || children)
         .concat(<hr style={active.hr} />)
@@ -66,20 +48,20 @@ export const TabV = ({ children, active, unactive, col }: TabV) => {
   const [cur, update] = useState(0)
   const tabs = React.Children.map(children, (node, index) => (
     <div>
-      <button
+      <Button
         style={index === cur ? active.button : unactive.button}
         key={index}
         onClick={() => update(index)}
-        onMouseOver={over(active.button)}
-        onMouseOut={out(index === cur, active.button, unactive.button)}
-      >
-        {(node['props'] as TabProps)['name']}
-      </button>
+        name={(node['props'] as TabProps)['name']}
+        activeStyle={active.button}
+        unactiveStyle={unactive.button}
+        isactive={index === cur}
+      />
     </div>
   ))
   const content = children[cur] || children
   return (
-    <Columns props={{ size: 2, col }} style={{ div: {} }}>
+    <Columns props={{ size: 2, col }}>
       <div>{tabs}</div>
       <div>{content}</div>
     </Columns>

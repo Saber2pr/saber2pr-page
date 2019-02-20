@@ -6,10 +6,10 @@ export interface Columns extends Props<any> {
     size?: number
     col?: string
   }
-  style: Style<'div'>
+  style?: Style<'div'>
 }
 
-export const Columns = ({ props, children, style }: Columns) => {
+export const Columns = ({ props, children, style = { div: {} } }: Columns) => {
   const size = props.size || 1
   const { div } = style
   return (

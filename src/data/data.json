@@ -99,108 +99,39 @@
     }
   ],
   "blog": [{
-      "name": "cocos",
-      "type": "cocos",
-      "content": "cocos_content"
+      "name": "第一篇",
+      "type": "daily",
+      "content": "日常"
     },
     {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "react",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "cocos",
-      "type": "cocos",
-      "content": "react_content"
-    }, {
-      "name": "cocos",
-      "type": "cocos",
-      "content": "cocos_content"
-    },
-    {
-      "name": "cocos",
-      "type": "cocos",
-      "content": "react_content"
-    },
-    {
-      "name": "cocos",
-      "type": "cocos",
-      "content": "react_content"
-    },
-    {
-      "name": "blog2",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "cocos",
-      "type": "react",
-      "content": "react_content"
-    },
-    {
-      "name": "cocos",
+      "name": "nodejs is best!!",
       "type": "nodejs",
-      "content": "react_content"
+      "content": "content"
+    },
+    {
+      "name": "type interface",
+      "type": "typescript",
+      "content": "content"
+    },
+    {
+      "name": "test",
+      "type": "daily",
+      "content": "ddd"
+    },
+    {
+      "name": "test",
+      "type": "daily",
+      "content": "ddd"
+    },
+    {
+      "name": "test",
+      "type": "daily",
+      "content": "ddd"
+    },
+    {
+      "name": "test",
+      "type": "daily",
+      "content": "ddd"
     }
   ],
   "about": {

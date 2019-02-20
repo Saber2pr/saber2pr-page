@@ -5,8 +5,8 @@ export const projectcss: Style<
   'img' | 'a' | 'p' | 'div' | 'input' | 'button'
 > = {
   div: {
-    marginTop: '50px',
-    marginBottom: '50px'
+    marginTop: '40px',
+    marginBottom: '30px'
   },
   img: {
     width: '80%'

@@ -20,7 +20,7 @@ export interface Application {
   }[]
   blog: {
     name: string
-    type: 'cocos' | 'react'
+    type: string
     content: string
   }[]
   about: {

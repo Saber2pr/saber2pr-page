@@ -11,7 +11,7 @@ export const Link = ({ props, style }: Link) => (
   <>
     {props.map(({ name, href }, index) => (
       <div key={index}>
-        <Anchor props={{ name, href }} style={style} key={index} />
+        <Anchor name={name} href={href} style={style} key={index} />
       </div>
     ))}
   </>
@@ -32,7 +32,7 @@ export const LinkImg = ({ props, style }: LinkImg) => {
         render={({ name, href, src, infor }, index) => (
           <Columns props={{ size: 3 }} style={style}>
             <div>
-              <Anchor props={{ name, href }} style={style} key={index} />
+              <Anchor name={name} href={href} style={style} key={index} />
             </div>
             <div>
               <img src={src} alt={name} style={img} key={index} />

@@ -27,8 +27,8 @@ export const tabVcss: Record<'active' | 'unactive', Style<'button'>> = {
   }
 }
 
-export const blogcss: Style<'div' | 'hr' | 'button' | 'input'> = {
-  div: { margin: '2% auto', width: '80%' },
+export const blogcss: Style<'div' | 'hr' | 'button' | 'input' | 'a'> = {
+  div: { margin: '2% auto', width: '90%' },
   hr: {},
   button: {
     ...globalcss.button,
@@ -40,6 +40,14 @@ export const blogcss: Style<'div' | 'hr' | 'button' | 'input'> = {
   },
   input: {
     ...globalcss.input,
-    marginTop: '10px'
+    marginTop: '10px',
+    marginBottom: '15px'
+  },
+  a: {
+    ...globalcss.a,
+    margin: '0 auto',
+    fontSize: '100%',
+    cursor: 'pointer',
+    lineHeight: '10%'
   }
 }

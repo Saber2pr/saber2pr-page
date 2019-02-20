@@ -1,5 +1,5 @@
-import React from 'react'
-import { Propsx } from './type'
+import React, { Props } from 'react'
+import { Style } from './type'
 import { style } from './style'
 
 export type EventHandle = (
@@ -16,11 +16,23 @@ const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
     boxShadow: ''
   })
 
-export const Anchor = ({ props, style }: Propsx<{ href; name }, 'a'>) => {
-  const { href, name } = props
+interface Anchor extends Props<any> {
+  href: string
+  name: string
+  style: Style<'a'>
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+}
+
+export const Anchor = ({ name, href, style, onClick }: Anchor) => {
   const { a } = style
   return (
-    <a href={href} style={a} onMouseOver={over} onMouseOut={out}>
+    <a
+      href={href}
+      style={a}
+      onMouseOver={over}
+      onMouseOut={out}
+      onClick={onClick}
+    >
       {name}
     </a>
   )

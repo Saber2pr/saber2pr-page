@@ -5,31 +5,53 @@ import { Application } from '../type'
 import { TabV, Tab } from './utils/tab'
 import { tabVcss } from '../css/css'
 import { find, Search } from './utils/search'
+import { Anchor } from './utils/anchor'
+import { Button } from './utils/button'
 
 const Content = ({
   props,
   style
-}: Propsx<Application['blog'], 'div' | 'hr' | 'button'>) => {
+}: Propsx<Application['blog'], 'div' | 'hr' | 'button' | 'a'>) => {
   const { hr, div, button } = style
-  return (
+  const [state, setState] = useState<'enter' | 'out'>('out')
+  const [cur, setCur] = useState(0)
+  const fold = (
     <Fold
       props={props}
       maxSize={6}
-      render={({ name, content, type }) => (
+      render={({ name }, index) => (
         <div style={div}>
-          <div>{name}</div>
+          <Anchor
+            name={name}
+            href={'#'}
+            style={style}
+            onClick={() => {
+              setState('enter')
+              setCur(index)
+            }}
+          />
           <hr style={hr} />
         </div>
       )}
       style={{ button }}
     />
   )
+  if (state === 'out') {
+    return fold
+  } else if (state === 'enter') {
+    return (
+      <div>
+        <p>{props[cur].content}</p>
+        <Button name={'back'} onClick={() => setState('out')} style={button} />
+      </div>
+    )
+  }
 }
 
 const Tabs = ({
   props,
   style
-}: Propsx<Application['blog'], 'div' | 'hr' | 'button'>) =>
+}: Propsx<Application['blog'], 'div' | 'hr' | 'button' | 'a'>) =>
   Array.from(new Set(props.map(v => v.type))).map(t => (
     <Tab name={t}>
       <Content props={find(props, v => v.type === t)} style={style} />
@@ -39,7 +61,7 @@ const Tabs = ({
 export const Blog = ({
   props,
   style
-}: Propsx<Application['blog'], 'div' | 'hr' | 'button' | 'input'>) => {
+}: Propsx<Application['blog'], 'div' | 'hr' | 'button' | 'input' | 'a'>) => {
   const { div } = style
   const [searched, setSearched] = useState(props)
   return (
@@ -47,7 +69,7 @@ export const Blog = ({
       <div style={div}>
         <Search props={props} onChange={v => setSearched(v)} style={style} />
         <TabV
-          col={'20% 80%'}
+          col={'25% 75%'}
           active={tabVcss.active}
           unactive={tabVcss.unactive}
         >
