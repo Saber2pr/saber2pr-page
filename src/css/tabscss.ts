@@ -8,7 +8,7 @@ const common: Style<'button' | 'bottom' | 'hr'> = {
   button: {
     ...globalcss.button,
     width: tabswidth,
-    fontSize: '150%'
+    fontSize: '120%'
   },
   bottom: globalcss.bottom,
   hr: globalcss.hr
