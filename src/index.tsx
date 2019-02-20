@@ -1,6 +1,3 @@
-export * from './core/home'
-export * from './core/project'
-export * from './core/about'
 export * from './core/utils/anchor'
 export * from './core/utils/button'
 export * from './core/utils/column'

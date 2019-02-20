@@ -1,4 +1,8 @@
 src/
+lib/core/home.*
+lib/core/blog.*
+lib/core/project.*
+lib/core/about.*
 lib/test/
 lib/css
 lib/data/
