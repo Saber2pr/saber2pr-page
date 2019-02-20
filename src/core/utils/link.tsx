@@ -1,11 +1,14 @@
 import React, { Props } from 'react'
-import { Propsx, Style } from './type'
 import { Anchor } from './anchor'
 import { Columns } from './column'
 import { Application } from '../../type'
 import { Fold } from './fold'
+import { Style } from './type'
 
-export type Link = Propsx<Application['home']['websites'], 'a'>
+export interface Link extends Props<any> {
+  props: Application['home']['websites']
+  style: Style<'a'>
+}
 
 export const Link = ({ props, style }: Link) => (
   <>

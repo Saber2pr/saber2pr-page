@@ -21,7 +21,8 @@ export const globalcss: Style<
     marginTop: '30px',
     marginBottom: '30px',
     fontSize: '150%',
-    color: '#f8ebc3'
+    color: '#f8ebc3',
+    lineHeight: '160%'
   },
   a: {
     fontSize: '150%',

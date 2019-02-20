@@ -27,7 +27,7 @@ export const tabVcss: Record<'active' | 'unactive', Style<'button'>> = {
   }
 }
 
-export const blogcss: Style<'div' | 'hr' | 'button' | 'input' | 'a'> = {
+export const blogcss: Style<'div' | 'hr' | 'button' | 'input' | 'a' | 'p'> = {
   div: { margin: '2% auto', width: '90%' },
   hr: {},
   button: {
@@ -49,5 +49,9 @@ export const blogcss: Style<'div' | 'hr' | 'button' | 'input' | 'a'> = {
     fontSize: '100%',
     cursor: 'pointer',
     lineHeight: '10%'
+  },
+  p: {
+    ...globalcss.p,
+    fontSize: '100%'
   }
 }

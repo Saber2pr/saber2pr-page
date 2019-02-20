@@ -99,44 +99,69 @@
     }
   ],
   "blog": [{
-      "name": "第一篇",
-      "type": "daily",
-      "content": "日常"
+      "name": "测试多行文本",
+      "type": "开发日志",
+      "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染。Blog | Project 页面内容添加方式为nodejs脚本，json对象的序列化与反序列化并写入json文件持久化。 项目的单元工具（utils）已经同步到npm。"
     },
     {
-      "name": "nodejs is best!!",
-      "type": "nodejs",
-      "content": "content"
+      "name": "测试插入",
+      "type": "开发日志",
+      "content": "测试添加新内容。"
     },
     {
-      "name": "type interface",
-      "type": "typescript",
-      "content": "content"
+      "name": "测试",
+      "type": "开发日志",
+      "content": "这是测试editor脚本。"
     },
     {
-      "name": "test",
-      "type": "daily",
-      "content": "ddd"
+      "name": "测试2",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（2）。"
     },
     {
-      "name": "test",
-      "type": "daily",
-      "content": "ddd"
+      "name": "测试3",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（3）。"
     },
     {
-      "name": "test",
-      "type": "daily",
-      "content": "ddd"
+      "name": "测试4",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（4）。"
     },
     {
-      "name": "test",
-      "type": "daily",
-      "content": "ddd"
+      "name": "测试5",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（5）。"
+    },
+    {
+      "name": "测试6",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（6）。"
+    },
+    {
+      "name": "测试7",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（7）。"
+    },
+    {
+      "name": "测试8",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（8）。"
+    },
+    {
+      "name": "测试9",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（9）。"
+    },
+    {
+      "name": "内容测试",
+      "type": "分类测试",
+      "content": "这是测试editor脚本（7）。"
     }
   ],
   "about": {
     "title": "说明",
-    "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染。项目的单元工具（utils）已经同步到npm。",
+    "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染。Blog | Project 页面内容添加方式为nodejs脚本，json对象的序列化与反序列化并写入json文件持久化。项目的单元工具（utils）已经同步到npm。",
     "more": "更多信息请移步github.com/Saber2pr/saber2pr。",
     "contact": "联系",
     "links": [{

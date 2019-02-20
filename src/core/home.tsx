@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Props } from 'react'
 import { Link } from './utils/link'
-import { Propsx } from './utils/type'
 import { Application } from '../type'
+import { Style } from './utils/type'
 
-type Home = Propsx<Application['home'], 'img' | 'a' | 'p'>
+export interface Home extends Props<any> {
+  props: Application['home']
+  style: Style<'img' | 'a' | 'p'>
+}
 
 export const Home = ({ props, style }: Home) => {
   const { title, logo, author, readME, websites } = props

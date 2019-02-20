@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, Props } from 'react'
 import { LinkImg } from './utils/link'
-import { Propsx } from './utils/type'
 import { Columns } from './utils/column'
 import { Search } from './utils/search'
 import { Application } from '../type'
+import { Style } from './utils/type'
 
-type Project = Propsx<
-  Application['project'],
-  'a' | 'img' | 'p' | 'div' | 'input' | 'button'
->
+export interface Project extends Props<any> {
+  props: Application['project']
+  style: Style<'a' | 'img' | 'p' | 'div' | 'input' | 'button'>
+}
 
 export const Project = ({ props, style }: Project) => {
   const { p } = style

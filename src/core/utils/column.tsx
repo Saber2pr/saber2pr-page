@@ -9,6 +9,8 @@ export interface Columns extends Props<any> {
   style?: Style<'div'>
 }
 
+const colsplit = (size: number) => ` ${100 / size}% `.repeat(size)
+
 export const Columns = ({ props, children, style = { div: {} } }: Columns) => {
   const size = props.size || 1
   const { div } = style
@@ -17,7 +19,7 @@ export const Columns = ({ props, children, style = { div: {} } }: Columns) => {
       style={{
         ...div,
         display: 'grid',
-        gridTemplateColumns: props.col || ` ${100 / size}% `.repeat(size)
+        gridTemplateColumns: props.col || colsplit(size)
       }}
     >
       {children}

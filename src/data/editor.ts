@@ -54,19 +54,41 @@ async function project_add() {
   const href = await Terminal.getUserInput('href: ')
   const src = await Terminal.getUserInput('src: ')
   const infor = await Terminal.getUserInput('infor: ')
-  await EDITOR(json => {
-    json.project.push({ name, href, src, infor })
-    return json
-  })
+  try {
+    await EDITOR(json => {
+      json.project.unshift({ name, href, src, infor })
+      return json
+    })
+  } catch (error) {
+    Terminal.Print.error(error)
+  }
+  Terminal.Print.success('project-add(ok)')
+}
+
+async function project_del() {
+  const name = await Terminal.getUserInput('name: ')
+  try {
+    await EDITOR(json => {
+      const projects = json.project.filter(p => p.name !== name)
+      json.project = projects
+      return json
+    })
+  } catch (error) {
+    Terminal.Print.error(error)
+  }
+  Terminal.Print.success('project-delete(ok)')
 }
 
 async function blog() {
   const input = await Terminal.getUserInput(
-    createOptions(['1. add a new blog.'])
+    createOptions(['1. add a new blog.', '2. delete a blog.'])
   )
   switch (input) {
     case '1':
       await blog_add()
+      break
+    case '2':
+      await blog_del()
       break
     default:
       Terminal.Print.error('input error.')
@@ -78,8 +100,27 @@ async function blog_add() {
   const name = await Terminal.getUserInput('name: ')
   const type = await Terminal.getUserInput('type: ')
   const content = await Terminal.getUserInput('content: ')
-  await EDITOR(json => {
-    json.blog.push({ name, type, content })
-    return json
-  })
+  try {
+    await EDITOR(json => {
+      json.blog.unshift({ name, type, content })
+      return json
+    })
+  } catch (error) {
+    Terminal.Print.error(error)
+  }
+  Terminal.Print.success('blog-add(ok)')
+}
+
+async function blog_del() {
+  const name = await Terminal.getUserInput('name: ')
+  try {
+    await EDITOR(json => {
+      const blogs = json.blog.filter(b => b.name !== name)
+      json.blog = blogs
+      return json
+    })
+  } catch (error) {
+    Terminal.Print.error(error)
+  }
+  Terminal.Print.success('blog delete(ok)')
 }
