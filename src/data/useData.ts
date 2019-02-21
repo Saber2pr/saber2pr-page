@@ -10,10 +10,12 @@ export function useData(props: Application['blog']) {
   }
   const save = (value: Application['blog'][0], index: number) => {
     data[index] = value
+    console.log('save')
     setData(data)
   }
   const create = (blog: Application['blog'][0]) => {
     data.unshift(blog)
+    console.log('create')
     setData(data)
   }
   return { data, save, del, create, setData }

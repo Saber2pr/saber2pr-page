@@ -1,4 +1,4 @@
-import React, { Props, useState } from 'react'
+import React, { Props } from 'react'
 import { Application } from '../type'
 import { TabV, Tab } from './utils/tab'
 import { tabVcss } from '../css/css'
@@ -7,6 +7,7 @@ import { Button } from './utils/button'
 import { Style } from './utils/type'
 import { Columns } from './utils/column'
 import { Content } from './components/blog_content'
+import { useData } from '../data/useData'
 
 export interface Blog extends Props<any> {
   props: Application['blog']
@@ -15,11 +16,7 @@ export interface Blog extends Props<any> {
 
 export const Blog = ({ props, style }: Blog) => {
   const { div } = style
-  const [data, setData] = useState(props)
-  const save = (value: Blog['props'][0]) => {
-    data.push(value)
-    setData(data)
-  }
+  const { data, setData } = useData(props)
   return (
     <>
       <div style={div}>
