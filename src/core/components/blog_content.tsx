@@ -40,9 +40,16 @@ const FoldNode = ({ props, style, cur, onEnter }: FoldNode) => {
 interface ContentNode extends Blog {
   current: number
   onOut: () => void
+  onDelete: (index: number) => void
 }
 
-const ContentNode = ({ props, style, onOut, current }: ContentNode) => {
+const ContentNode = ({
+  props,
+  style,
+  onOut,
+  current,
+  onDelete
+}: ContentNode) => {
   const { p, button } = style
   const content = props[current] || props[0]
   return (
@@ -50,13 +57,24 @@ const ContentNode = ({ props, style, onOut, current }: ContentNode) => {
       <h1 style={p}>{content.name}</h1>
       <p style={p}>{content.content}</p>
       <Button name="编辑" style={button} />
-      <Button name="删除" style={button} onClick={onOut} />
+      <Button
+        name="删除"
+        style={button}
+        onClick={() => {
+          onOut()
+          onDelete(current)
+        }}
+      />
       <Button name={'返回'} onClick={onOut} style={button} />
     </div>
   )
 }
 
-export const Content = ({ props, style }: Blog) => {
+export interface Content extends Blog {
+  onDelete: (index: number) => void
+}
+
+export const Content = ({ props, style, onDelete }: Content) => {
   const [state, setState] = useState<'enter' | 'out'>('out')
   const [cur, setCur] = useState(0)
   const Out = () => {
@@ -76,6 +94,14 @@ export const Content = ({ props, style }: Blog) => {
       />
     )
   } else if (state === 'enter') {
-    return <ContentNode props={props} style={style} onOut={Out} current={cur} />
+    return (
+      <ContentNode
+        props={props}
+        style={style}
+        onOut={Out}
+        current={cur}
+        onDelete={onDelete}
+      />
+    )
   }
 }
