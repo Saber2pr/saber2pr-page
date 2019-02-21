@@ -1,7 +1,16 @@
 import { Style } from '../core/utils/type'
 
 export const globalcss: Style<
-  'img' | 'p' | 'a' | 'div' | 'button' | 'body' | 'bottom' | 'hr' | 'input'
+  | 'img'
+  | 'p'
+  | 'a'
+  | 'div'
+  | 'button'
+  | 'body'
+  | 'bottom'
+  | 'hr'
+  | 'input'
+  | 'textarea'
 > = {
   body: {
     backgroundColor: '#191a21'
@@ -53,5 +62,12 @@ export const globalcss: Style<
     backgroundColor: '#191a21',
     color: '#2a334d',
     border: '1px solid #282a36'
+  },
+  textarea: {
+    width: '90%',
+    height: '300px',
+    backgroundColor: '#282a36',
+    border: '1px solid #2a334d',
+    color: '#f8ebc3'
   }
 }
