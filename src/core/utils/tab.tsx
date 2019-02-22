@@ -13,10 +13,11 @@ export interface Tabs extends Props<any> {
   unactive: Style<'button' | 'bottom' | 'hr'>
   active: Style<'button' | 'bottom' | 'hr'>
   bottom?: string
+  current?: number
 }
 
-export function Tabs<T>({ children, active, unactive, bottom }: Tabs) {
-  const [cur, update] = useState(0)
+export function Tabs<T>({ children, active, unactive, bottom, current }: Tabs) {
+  const [cur, update] = useState(current || 0)
   return (
     <>
       {React.Children.map(children, (node, index) => (

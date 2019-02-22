@@ -1,10 +1,10 @@
 import React, { Props } from 'react'
 import { Link } from './utils/link'
-import { Application } from '../type'
+import { Data } from '../type'
 import { Style } from './utils/type'
 
 export interface Home extends Props<any> {
-  props: Application['home']
+  props: Data['home']
   style: Style<'img' | 'a' | 'p'>
 }
 

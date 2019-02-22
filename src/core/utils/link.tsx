@@ -1,12 +1,12 @@
 import React, { Props } from 'react'
 import { Anchor } from './anchor'
 import { Columns } from './column'
-import { Application } from '../../type'
+import { Data } from '../../type'
 import { Fold } from './fold'
 import { Style } from './type'
 
 export interface Link extends Props<any> {
-  props: Application['home']['websites']
+  props: Data['home']['websites']
   style: Style<'a'>
 }
 
@@ -21,7 +21,7 @@ export const Link = ({ props, style }: Link) => (
 )
 
 export interface LinkImg extends Props<any> {
-  props: Application['project']
+  props: Data['project']
   style: Style<'a' | 'img' | 'p' | 'div' | 'button'>
 }
 

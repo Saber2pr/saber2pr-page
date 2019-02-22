@@ -1,9 +1,9 @@
 import { Terminal, File } from 'saber-node'
-import { Application } from '../type'
+import { Data } from '../type'
 
 const DATA = `${process.cwd()}/src/data/data.json`
 
-const EDITOR = File.Json.pipe<Application>(DATA)
+const EDITOR = File.Json.pipe<Data>(DATA)
 
 const createOptions = (array: string[]) =>
   ['input the index:']
@@ -24,6 +24,7 @@ async function main() {
       await project()
       break
     case '4':
+      await about()
       break
     case '5':
       await blog()
@@ -34,6 +35,19 @@ async function main() {
   }
 }
 main()
+
+async function about() {
+  const content = await Terminal.getUserInput('content: ')
+  try {
+    await EDITOR(json => {
+      json.about.content = content
+      return json
+    })
+  } catch (error) {
+    Terminal.Print.error(error)
+  }
+  Terminal.Print.success('about-edit(ok)')
+}
 
 async function project() {
   const input = await Terminal.getUserInput(

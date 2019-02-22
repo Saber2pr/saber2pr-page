@@ -1,10 +1,10 @@
 import React, { Props } from 'react'
 import { Link } from './utils/link'
-import { Application } from '../type'
+import { Data } from '../type'
 import { Style } from './utils/type'
 
 export interface About extends Props<any> {
-  props: Application['about']
+  props: Data['about']
   style: Style<'a' | 'p'>
 }
 

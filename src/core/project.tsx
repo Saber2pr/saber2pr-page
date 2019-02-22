@@ -2,11 +2,11 @@ import React, { useState, Props } from 'react'
 import { LinkImg } from './utils/link'
 import { Columns } from './utils/column'
 import { Search } from './utils/search'
-import { Application } from '../type'
+import { Data } from '../type'
 import { Style } from './utils/type'
 
 export interface Project extends Props<any> {
-  props: Application['project']
+  props: Data['project']
   style: Style<'a' | 'img' | 'p' | 'div' | 'input' | 'button'>
 }
 

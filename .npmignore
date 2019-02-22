@@ -3,10 +3,12 @@ lib/core/home.*
 lib/core/blog.*
 lib/core/project.*
 lib/core/about.*
+lib/core/components
 lib/test/
 lib/css
 lib/data/
 lib/Application.*
+lib/Server.*
 build/
 tsconfig.json
 rollup.config.js

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Blog } from '../blog'
-import { useData } from '../../data/useData'
 import { Button } from '../utils/button'
+import { Store } from '../../data/observable'
 
 interface ContentNode extends Blog {
   current: number
@@ -18,7 +18,6 @@ export const ContentEnter = ({
 }: ContentNode) => {
   const { p, button } = style
   const content = props[current] || props[0]
-  const { del } = useData(props)
   const [delState, setDelState] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
@@ -32,7 +31,11 @@ export const ContentEnter = ({
           if (delState === '删除') {
             setDelState('确定删除？')
           } else if (delState === '确定删除？') {
-            del(current)
+            Store.pipe(data => {
+              data.common.current = 'blog'
+              data.blog = data.blog.filter(b => b.name !== content.name)
+              return data
+            })
             onOut()
           }
         }}

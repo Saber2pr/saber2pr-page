@@ -1,7 +1,4 @@
-export interface Application {
-  common: {
-    footer: string
-  }
+export interface Data {
   home: {
     title: string
     logo: string
@@ -12,16 +9,16 @@ export interface Application {
       href: string
     }[]
   }
+  blog: {
+    name: string
+    type: string
+    content: string
+  }[]
   project: {
     name: string
     href: string
     src: string
     infor: string
-  }[]
-  blog: {
-    name: string
-    type: string
-    content: string
   }[]
   about: {
     title: string
@@ -32,5 +29,9 @@ export interface Application {
       name: string
       href: string
     }[]
+  }
+  common: {
+    footer: string
+    current: 'home' | 'project' | 'blog' | 'about'
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { useData } from '../../data/useData'
+import { Store } from '../../data/observable'
 
 interface Editor extends Blog {
   index: number
@@ -10,8 +10,11 @@ interface Editor extends Blog {
 
 export const ContentEditor = ({ props, style, onOut, index }: Editor) => {
   const { button, textarea, p } = style
-  const content = props[index] || props[0]
-  const { save } = useData(props)
+  const EditContent = props[index] || {
+    name: '标题...',
+    type: '分类...',
+    content: '写新内容...'
+  }
   const inputcss = {
     color: textarea.color,
     backgroundColor: textarea.backgroundColor,
@@ -23,41 +26,51 @@ export const ContentEditor = ({ props, style, onOut, index }: Editor) => {
     fontSize: p.fontSize,
     color: p.color
   }
+  const save = () => {
+    Store.pipe(data => {
+      data.common.current = 'blog'
+      if (index === -1) {
+        if (data.blog.find(b => b.name === EditContent.name)) {
+          alert('标题名已存在！')
+        } else {
+          data.blog.unshift(EditContent)
+          onOut()
+        }
+      } else {
+        data.blog[index] = EditContent
+        onOut()
+      }
+      return data
+    })
+  }
   return (
     <div>
       <div>
         <span style={pcss}>标题：</span>
         <input
           type="text"
-          defaultValue={content.name}
+          defaultValue={EditContent.name}
           style={inputcss}
-          onChange={e => (content.name = e.target.value)}
+          onChange={e => (EditContent.name = e.target.value)}
         />
       </div>
       <div>
         <span style={pcss}>分类：</span>
         <input
           type="text"
-          defaultValue={content.type}
+          defaultValue={EditContent.type}
           style={inputcss}
-          onChange={e => (content.type = e.target.value)}
+          onChange={e => (EditContent.type = e.target.value)}
         />
       </div>
       <div>
         <textarea
-          defaultValue={content.content}
+          defaultValue={EditContent.content}
           style={textarea}
-          onChange={e => (content.content = e.target.value)}
+          onChange={e => (EditContent.content = e.target.value)}
         />
       </div>
-      <Button
-        style={button}
-        name={'保存'}
-        onClick={() => {
-          save(content, index)
-          onOut()
-        }}
-      />
+      <Button style={button} name={'保存'} onClick={save} />
       <Button style={button} name={'返回'} onClick={onOut} />
     </div>
   )
