@@ -6,8 +6,14 @@ import { Project } from './core/project'
 import { Blog } from './core/blog'
 import { About } from './core/about'
 import { style } from './core/utils/style'
-import { globalcss, tabscss, projectcss, aboutcss, blogcss } from './css/css'
-import { homecss } from './css/homecss'
+import {
+  globalcss,
+  tabscss,
+  projectcss,
+  aboutcss,
+  blogcss,
+  homecss
+} from './css/css'
 import { Store } from './data/observable'
 import { Data } from './type'
 

@@ -1,5 +1,6 @@
 export * from './aboutcss'
 export * from './globalcss'
+export * from './homecss'
 export * from './projectcss'
 export * from './tabscss'
 export * from './blogcss'
