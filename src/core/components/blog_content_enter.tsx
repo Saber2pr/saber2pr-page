@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
 import { Store } from '../../data/observable'
+import { CodeText } from '../utils/codeText'
 
 interface ContentNode extends Blog {
   current: number
@@ -17,12 +18,12 @@ export const ContentEnter = ({
   onEdit
 }: ContentNode) => {
   const { p, button } = style
-  const content = props[current] || props[0]
+  const blog = props[current] || props[0]
   const [delState, setDelState] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
-      <h1 style={p}>{content.name}</h1>
-      <p style={p}>{content.content}</p>
+      <h1 style={p}>{blog.name}</h1>
+      <CodeText content={blog.content} style={{ p, pre: p }} />
       <Button name="编辑" style={button} onClick={() => onEdit(current)} />
       <Button
         name={delState}
@@ -33,7 +34,7 @@ export const ContentEnter = ({
           } else if (delState === '确定删除？') {
             Store.pipe(data => {
               data.common.current = 'blog'
-              data.blog = data.blog.filter(b => b.name !== content.name)
+              data.blog = data.blog.filter(b => b.name !== blog.name)
               return data
             })
             onOut()

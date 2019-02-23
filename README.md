@@ -24,6 +24,10 @@ npm start
 npm run dev
 
 npm run build
+
+npm run edit
+
+npm run serve
 ```
 
 > Author: saber2pr

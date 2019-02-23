@@ -21,7 +21,5 @@ Ajax('/src/data/data.json')
 Store.subscribe(data => {
   Ajax('/src/data/data.json', JSON.stringify(data))
     .then(() => console.log('post ok!'))
-    .catch(err => {
-      console.error('post fail!', err)
-    })
+    .catch(err => console.error('post fail!', err))
 })
