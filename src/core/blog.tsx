@@ -10,7 +10,6 @@ import { Content } from './components/blog_content'
 import { ContentEditor } from './components/blog_content_edit'
 import { Store } from '../data/observable'
 import { blog_state, blog_tab_index, blog_content_state } from './commonOp'
-import { compose } from 'saber-observable'
 
 export interface Blog extends Props<any> {
   props: Data['blog']
@@ -55,10 +54,8 @@ export const Blog = ({
           current={tabcur}
           onClick={index =>
             Store.pipe(
-              compose(
-                blog_tab_index(index),
-                blog_content_state('out')
-              )
+              blog_tab_index(index),
+              blog_content_state('out')
             )
           }
         >

@@ -9,7 +9,6 @@ import {
   blog_content_del,
   blog_content_index
 } from '../commonOp'
-import { compose } from 'saber-observable'
 
 interface ContentEnter {
   props: Data['blog']
@@ -30,10 +29,8 @@ export const ContentEnter = ({ props, style, current }: ContentEnter) => {
         style={button}
         onClick={() =>
           Store.pipe(
-            compose(
-              blog_content_state('edit'),
-              blog_content_index(current)
-            )
+            blog_content_state('edit'),
+            blog_content_index(current)
           )
         }
       />
@@ -45,10 +42,8 @@ export const ContentEnter = ({ props, style, current }: ContentEnter) => {
             setDelState('确定删除？')
           } else if (delState === '确定删除？') {
             Store.pipe(
-              compose(
-                blog_content_del(blog.name),
-                blog_content_state('out')
-              )
+              blog_content_del(blog.name),
+              blog_content_state('out')
             )
           }
         }}

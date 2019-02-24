@@ -4,7 +4,6 @@ import { Button } from '../utils/button'
 import { Store } from '../../data/observable'
 import { Data } from '../../type'
 import { blog_content_state, blog_state } from '../commonOp'
-import { compose } from 'saber-observable'
 
 interface Editor {
   props: Data['blog']
@@ -36,24 +35,22 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
   }
   const save = () =>
     Store.pipe(
-      compose(
-        data => {
-          if (blogState === 'new') {
-            if (data.blog.find(b => b.name === EditContent.name)) {
-              alert('标题名已存在！')
-            } else {
-              data.common.blog_tabcur = 0
-              data.blog.unshift(EditContent)
-            }
-          } else if (blogState === 'view') {
-            const index = data.blog.map(b => b.name).indexOf(EditContent.name)
-            data.blog[index] = EditContent
+      data => {
+        if (blogState === 'new') {
+          if (data.blog.find(b => b.name === EditContent.name)) {
+            alert('标题名已存在！')
+          } else {
+            data.common.blog_tabcur = 0
+            data.blog.unshift(EditContent)
           }
-          return data
-        },
-        blog_content_state('enter'),
-        blog_state('view')
-      )
+        } else if (blogState === 'view') {
+          const index = data.blog.map(b => b.name).indexOf(EditContent.name)
+          data.blog[index] = EditContent
+        }
+        return data
+      },
+      blog_content_state('enter'),
+      blog_state('view')
     )
   return (
     <div>
@@ -88,12 +85,10 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
         name={'返回'}
         onClick={() =>
           Store.pipe(
-            compose(
-              blogState === 'view'
-                ? blog_content_state('enter')
-                : blog_content_state('out'),
-              blog_state('view')
-            )
+            blogState === 'view'
+              ? blog_content_state('enter')
+              : blog_content_state('out'),
+            blog_state('view')
           )
         }
       />

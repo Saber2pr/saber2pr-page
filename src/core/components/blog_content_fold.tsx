@@ -4,7 +4,6 @@ import { Fold } from '../utils/fold'
 import { Anchor } from '../utils/anchor'
 import { Data } from '../../type'
 import { Store } from '../../data/observable'
-import { compose } from 'saber-observable'
 import {
   blog_content_index,
   blog_content_state,
@@ -35,11 +34,9 @@ export const ContentFold = ({ props, style, contentCur, tabcur }: FoldNode) => {
             style={style}
             onClick={() =>
               Store.pipe(
-                compose(
-                  blog_content_index(index),
-                  blog_tab_index(tabcur),
-                  blog_content_state('enter')
-                )
+                blog_content_index(index),
+                blog_tab_index(tabcur),
+                blog_content_state('enter')
               )
             }
           />
