@@ -151,6 +151,10 @@
   },
   "common": {
     "footer": "github.com/Saber2pr",
-    "current": "home"
+    "tab_cur": 0,
+    "blog_tabcur": 0,
+    "blog_contentCur": 0,
+    "blogState": "view",
+    "blog_contentState": "out"
   }
 }

@@ -1,7 +1,7 @@
 import { globalcss } from './globalcss'
-import { Style } from '../core/utils/type'
+import { About } from '../core/about'
 
-export const aboutcss: Style<'p' | 'a'> = {
+export const aboutcss: About['style'] = {
   p: {
     ...globalcss.p,
     width: '80%',

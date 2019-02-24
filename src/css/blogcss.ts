@@ -1,5 +1,6 @@
 import { Style } from '../core/utils/type'
 import { globalcss } from './globalcss'
+import { Blog } from '../core/blog'
 
 const common: Style<'button'> = {
   button: {
@@ -27,9 +28,7 @@ export const tabVcss: Record<'active' | 'unactive', Style<'button'>> = {
   }
 }
 
-export const blogcss: Style<
-  'div' | 'hr' | 'button' | 'input' | 'a' | 'p' | 'textarea' | 'pre'
-> = {
+export const blogcss: Blog['style'] = {
   div: { margin: '2% auto', width: '90%' },
   hr: {},
   button: {

@@ -9,7 +9,7 @@ Ajax('/src/data/data.json')
   .then(value =>
     Store.pipe(() => {
       const data: Data = JSON.parse(value)
-      data.common.current = 'home'
+      data.common.tab_cur = 0
       return data
     })
   )

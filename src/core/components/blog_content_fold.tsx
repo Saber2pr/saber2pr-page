@@ -2,16 +2,21 @@ import React from 'react'
 import { Blog } from '../blog'
 import { Fold } from '../utils/fold'
 import { Anchor } from '../utils/anchor'
+import { Data } from '../../type'
+import { Store } from '../../data/observable'
+import { compose } from 'saber-observable'
+import { blog_content_index, blog_content_state } from '../commonOp'
 
 const record = (cur: number, size: number) =>
   (parseInt(String(cur / size)) + 1) * size
 
-interface FoldNode extends Blog {
+interface FoldNode {
+  props: Data['blog']
+  style: Blog['style']
   current: number
-  onEnter: (index: number) => void
 }
 
-export const ContentFold = ({ props, style, current, onEnter }: FoldNode) => {
+export const ContentFold = ({ props, style, current }: FoldNode) => {
   const { div, hr } = style
   return (
     <Fold
@@ -23,9 +28,14 @@ export const ContentFold = ({ props, style, current, onEnter }: FoldNode) => {
             name={name}
             href={'#'}
             style={style}
-            onClick={() => {
-              onEnter(index)
-            }}
+            onClick={() =>
+              Store.pipe(
+                compose(
+                  blog_content_index(index),
+                  blog_content_state('enter')
+                )
+              )
+            }
           />
           <hr style={hr} />
         </div>

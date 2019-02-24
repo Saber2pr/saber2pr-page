@@ -3,28 +3,40 @@ import { Blog } from '../blog'
 import { Button } from '../utils/button'
 import { Store } from '../../data/observable'
 import { CodeText } from '../utils/codeText'
+import { Data } from '../../type'
+import {
+  blog_content_state,
+  blog_content_del,
+  blog_content_index
+} from '../commonOp'
+import { compose } from 'saber-observable'
 
-interface ContentNode extends Blog {
+interface ContentEnter {
+  props: Data['blog']
+  style: Blog['style']
   current: number
-  onOut: () => void
-  onEdit: (index: number) => void
 }
 
-export const ContentEnter = ({
-  props,
-  style,
-  onOut,
-  current,
-  onEdit
-}: ContentNode) => {
-  const { p, button, pre } = style
+export const ContentEnter = ({ props, style, current }: ContentEnter) => {
+  const { p, button } = style
   const blog = props[current] || props[0]
   const [delState, setDelState] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
       <h1 style={p}>{blog.name}</h1>
       <CodeText content={blog.content} style={style} />
-      <Button name="编辑" style={button} onClick={() => onEdit(current)} />
+      <Button
+        name="编辑"
+        style={button}
+        onClick={() =>
+          Store.pipe(
+            compose(
+              blog_content_state('edit'),
+              blog_content_index(current)
+            )
+          )
+        }
+      />
       <Button
         name={delState}
         style={button}
@@ -32,16 +44,20 @@ export const ContentEnter = ({
           if (delState === '删除') {
             setDelState('确定删除？')
           } else if (delState === '确定删除？') {
-            Store.pipe(data => {
-              data.common.current = 'blog'
-              data.blog = data.blog.filter(b => b.name !== blog.name)
-              return data
-            })
-            onOut()
+            Store.pipe(
+              compose(
+                blog_content_del(blog.name),
+                blog_content_state('out')
+              )
+            )
           }
         }}
       />
-      <Button name={'返回'} onClick={onOut} style={button} />
+      <Button
+        name={'返回'}
+        onClick={() => Store.pipe(blog_content_state('out'))}
+        style={button}
+      />
     </div>
   )
 }

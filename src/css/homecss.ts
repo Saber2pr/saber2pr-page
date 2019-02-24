@@ -1,7 +1,7 @@
-import { Style } from '../core/utils/type'
 import { globalcss } from './globalcss'
+import { Home } from '../core/home'
 
-export const homecss: Style<'img' | 'a' | 'p'> = {
+export const homecss: Home['style'] = {
   a: {
     ...globalcss.a,
     fontSize: '150%'

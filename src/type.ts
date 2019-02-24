@@ -32,6 +32,10 @@ export interface Data {
   }
   common: {
     footer: string
-    current: 'home' | 'project' | 'blog' | 'about'
+    tab_cur: number
+    blog_tabcur: number
+    blog_contentCur: number
+    blogState: 'view' | 'new'
+    blog_contentState: 'enter' | 'out' | 'edit'
   }
 }

@@ -1,9 +1,7 @@
-import { Style } from '../core/utils/type'
 import { globalcss } from './globalcss'
+import { Project } from '../core/project'
 
-export const projectcss: Style<
-  'img' | 'a' | 'p' | 'div' | 'input' | 'button'
-> = {
+export const projectcss: Project['style'] = {
   div: {
     marginTop: '40px',
     marginBottom: '30px'

@@ -14,9 +14,17 @@ export interface Tabs extends Props<any> {
   active: Style<'button' | 'bottom' | 'hr'>
   bottom?: string
   current?: number
+  onClick?: (index: number) => void
 }
 
-export function Tabs<T>({ children, active, unactive, bottom, current }: Tabs) {
+export function Tabs<T>({
+  children,
+  active,
+  unactive,
+  bottom,
+  current,
+  onClick
+}: Tabs) {
   const [cur, update] = useState(current || 0)
   return (
     <>
@@ -24,7 +32,10 @@ export function Tabs<T>({ children, active, unactive, bottom, current }: Tabs) {
         <Button
           style={index === cur ? active.button : unactive.button}
           key={index}
-          onClick={() => update(index)}
+          onClick={() => {
+            !!onClick ? onClick(index) : null
+            update(index)
+          }}
           activeStyle={active.button}
           unactiveStyle={unactive.button}
           name={(node['props'] as TabProps)['name']}
@@ -43,16 +54,30 @@ export interface TabV extends Props<any> {
   active: Style<'button'>
   bottom?: string
   col: string
+  current?: number
+  onClick?: (index: number) => void
 }
 
-export const TabV = ({ children, active, unactive, col }: TabV) => {
-  const [cur, update] = useState(0)
-  const tabs = React.Children.map(children, (node, index) => (
+export const TabV = ({
+  children,
+  active,
+  unactive,
+  col,
+  current,
+  onClick
+}: TabV) => {
+  const array = React.Children.toArray(children)
+  current = current < array.length ? current : array.length - 1
+  const [cur, update] = useState(current)
+  const tabs = array.map((node, index) => (
     <div>
       <Button
         style={index === cur ? active.button : unactive.button}
         key={index}
-        onClick={() => update(index)}
+        onClick={() => {
+          !!onClick ? onClick(index) : null
+          update(index)
+        }}
         name={(node['props'] as TabProps)['name']}
         activeStyle={active.button}
         unactiveStyle={unactive.button}
