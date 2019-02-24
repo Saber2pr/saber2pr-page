@@ -68,7 +68,8 @@ export const Blog = ({
                 props={find(data, v => v.type === t)}
                 style={style}
                 state={contentState}
-                current={contentcur}
+                contentCur={contentcur}
+                tabcur={tabcur}
                 blogState={blogState}
               />
             </Tab>

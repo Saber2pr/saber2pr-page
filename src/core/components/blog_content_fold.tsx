@@ -5,7 +5,11 @@ import { Anchor } from '../utils/anchor'
 import { Data } from '../../type'
 import { Store } from '../../data/observable'
 import { compose } from 'saber-observable'
-import { blog_content_index, blog_content_state } from '../commonOp'
+import {
+  blog_content_index,
+  blog_content_state,
+  blog_tab_index
+} from '../commonOp'
 
 const record = (cur: number, size: number) =>
   (parseInt(String(cur / size)) + 1) * size
@@ -13,15 +17,16 @@ const record = (cur: number, size: number) =>
 interface FoldNode {
   props: Data['blog']
   style: Blog['style']
-  current: number
+  contentCur: Data['common']['blog_contentCur']
+  tabcur: Data['common']['blog_tabcur']
 }
 
-export const ContentFold = ({ props, style, current }: FoldNode) => {
+export const ContentFold = ({ props, style, contentCur, tabcur }: FoldNode) => {
   const { div, hr } = style
   return (
     <Fold
       props={props}
-      maxSize={record(current, 6)}
+      maxSize={record(contentCur, 6)}
       render={({ name }, index) => (
         <div style={div}>
           <Anchor
@@ -32,6 +37,7 @@ export const ContentFold = ({ props, style, current }: FoldNode) => {
               Store.pipe(
                 compose(
                   blog_content_index(index),
+                  blog_tab_index(tabcur),
                   blog_content_state('enter')
                 )
               )

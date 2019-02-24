@@ -10,26 +10,35 @@ interface Content {
   style: Blog['style']
   state: Data['common']['blog_contentState']
   blogState: Data['common']['blogState']
-  current: number
+  contentCur: Data['common']['blog_contentCur']
+  tabcur: Data['common']['blog_tabcur']
 }
 
 export const Content = ({
   props,
   style,
   state,
-  current,
-  blogState
+  contentCur,
+  blogState,
+  tabcur
 }: Content) => {
   if (state === 'out') {
-    return <ContentFold props={props} style={style} current={current} />
+    return (
+      <ContentFold
+        props={props}
+        style={style}
+        contentCur={contentCur}
+        tabcur={tabcur}
+      />
+    )
   } else if (state === 'enter') {
-    return <ContentEnter props={props} style={style} current={current} />
+    return <ContentEnter props={props} style={style} current={contentCur} />
   } else if (state === 'edit') {
     return (
       <ContentEditor
         props={props}
         style={style}
-        current={current}
+        current={contentCur}
         blogState={blogState}
       />
     )
