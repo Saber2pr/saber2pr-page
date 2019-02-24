@@ -42,6 +42,7 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
             if (data.blog.find(b => b.name === EditContent.name)) {
               alert('标题名已存在！')
             } else {
+              data.common.blog_tabcur = 0
               data.blog.unshift(EditContent)
             }
           } else if (blogState === 'view') {
@@ -88,7 +89,9 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
         onClick={() =>
           Store.pipe(
             compose(
-              blog_content_state('enter'),
+              blogState === 'view'
+                ? blog_content_state('enter')
+                : blog_content_state('out'),
               blog_state('view')
             )
           )
