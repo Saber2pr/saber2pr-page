@@ -17,7 +17,9 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
   }
   const pstyle: CSSProperties = {
     ...commonstyle,
-    ...p
+    ...p,
+    overflow: 'scroll',
+    overflowY: 'hidden'
   }
   const prestyle: CSSProperties = {
     ...commonstyle,
@@ -31,14 +33,7 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
           return (
             <>
               <pre style={prestyle}>
-                <p
-                  style={{
-                    overflow: 'scroll',
-                    overflowY: 'hidden'
-                  }}
-                >
-                  {result[0]}
-                </p>
+                <p style={{}}>{result[0]}</p>
               </pre>
               <p style={pstyle}>{result[1]}</p>
             </>
