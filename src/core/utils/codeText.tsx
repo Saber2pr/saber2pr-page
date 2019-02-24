@@ -30,7 +30,16 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
           const result = c.split(_end)
           return (
             <>
-              <pre style={prestyle}>{result[0]}</pre>
+              <pre style={prestyle}>
+                <p
+                  style={{
+                    overflow: 'scroll',
+                    overflowY: 'hidden'
+                  }}
+                >
+                  {result[0]}
+                </p>
+              </pre>
               <p style={pstyle}>{result[1]}</p>
             </>
           )
