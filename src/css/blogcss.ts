@@ -28,7 +28,7 @@ export const tabVcss: Record<'active' | 'unactive', Style<'button'>> = {
 }
 
 export const blogcss: Style<
-  'div' | 'hr' | 'button' | 'input' | 'a' | 'p' | 'textarea'
+  'div' | 'hr' | 'button' | 'input' | 'a' | 'p' | 'textarea' | 'pre'
 > = {
   div: { margin: '2% auto', width: '90%' },
   hr: {},
@@ -57,5 +57,10 @@ export const blogcss: Style<
     fontSize: '90%',
     color: '#799cb9'
   },
-  textarea: globalcss.textarea
+  textarea: globalcss.textarea,
+  pre: {
+    ...globalcss.p,
+    fontSize: '105%',
+    color: '#6dbb94'
+  }
 }

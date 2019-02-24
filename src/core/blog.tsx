@@ -11,7 +11,9 @@ import { ContentEditor } from './components/blog_content_edit'
 
 export interface Blog extends Props<any> {
   props: Data['blog']
-  style: Style<'div' | 'hr' | 'button' | 'a' | 'p' | 'input' | 'textarea'>
+  style: Style<
+    'div' | 'hr' | 'button' | 'a' | 'p' | 'input' | 'textarea' | 'pre'
+  >
 }
 
 export const Blog = ({ props, style }: Blog) => {

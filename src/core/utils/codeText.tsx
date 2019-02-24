@@ -16,14 +16,14 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
     textAlign: 'left'
   }
   const pstyle: CSSProperties = {
-    ...commonstyle,
     ...p,
-    overflow: 'scroll',
-    overflowY: 'hidden'
+    ...commonstyle
   }
   const prestyle: CSSProperties = {
+    ...pre,
     ...commonstyle,
-    ...pre
+    overflow: 'scroll',
+    overflowY: 'hidden'
   }
   return (
     <>
@@ -32,8 +32,8 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
           const result = c.split(_end)
           return (
             <>
-              <pre style={prestyle}>
-                <p style={{}}>{result[0]}</p>
+              <pre>
+                <p style={prestyle}>{result[0]}</p>
               </pre>
               <p style={pstyle}>{result[1]}</p>
             </>

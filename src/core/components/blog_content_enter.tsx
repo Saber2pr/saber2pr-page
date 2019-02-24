@@ -17,13 +17,13 @@ export const ContentEnter = ({
   current,
   onEdit
 }: ContentNode) => {
-  const { p, button } = style
+  const { p, button, pre } = style
   const blog = props[current] || props[0]
   const [delState, setDelState] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
       <h1 style={p}>{blog.name}</h1>
-      <CodeText content={blog.content} style={{ p, pre: p }} />
+      <CodeText content={blog.content} style={style} />
       <Button name="编辑" style={button} onClick={() => onEdit(current)} />
       <Button
         name={delState}
