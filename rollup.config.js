@@ -3,7 +3,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
 
 export default {
-  input: './lib/Application.js',
+  input: './lib/main.js',
   output: {
     file: 'build/bundle.min.js',
     format: 'iife',

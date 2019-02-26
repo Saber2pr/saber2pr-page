@@ -1,4 +1,4 @@
-import { Data } from '../type'
+import { Data } from '../interface'
 
 export const tab_index = (index: number) => (data: Data) => {
   data.common.tab_cur = index

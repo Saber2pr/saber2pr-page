@@ -1,6 +1,6 @@
 import React, { Props } from 'react'
 import { Link } from './utils/link'
-import { Data } from '../type'
+import { Data } from '../interface'
 import { Style } from './utils/type'
 
 export interface Home extends Props<any> {

@@ -1,7 +1,7 @@
 import React, { Props } from 'react'
 import { Anchor } from './anchor'
 import { Columns } from './column'
-import { Data } from '../../type'
+import { Data } from '../../interface'
 import { Fold } from './fold'
 import { Style } from './type'
 

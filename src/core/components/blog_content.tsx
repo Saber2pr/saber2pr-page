@@ -3,7 +3,7 @@ import { Blog } from '../blog'
 import { ContentEditor } from './blog_content_edit'
 import { ContentEnter } from './blog_content_enter'
 import { ContentFold } from './blog_content_fold'
-import { Data } from '../../type'
+import { Data } from '../../interface'
 
 interface Content {
   props: Data['blog']

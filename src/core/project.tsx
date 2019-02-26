@@ -2,7 +2,7 @@ import React, { useState, Props } from 'react'
 import { LinkImg } from './utils/link'
 import { Columns } from './utils/column'
 import { Search } from './utils/search'
-import { Data } from '../type'
+import { Data } from '../interface'
 import { Style } from './utils/type'
 
 export interface Project extends Props<any> {

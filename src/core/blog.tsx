@@ -1,5 +1,5 @@
 import React, { Props, useState } from 'react'
-import { Data } from '../type'
+import { Data } from '../interface'
 import { TabV, Tab } from './utils/tab'
 import { tabVcss } from '../css/css'
 import { find, Search } from './utils/search'
@@ -8,8 +8,8 @@ import { Style } from './utils/type'
 import { Columns } from './utils/column'
 import { Content } from './components/blog_content'
 import { ContentEditor } from './components/blog_content_edit'
-import { Store } from '../data/observable'
 import { blog_state, blog_tab_index, blog_content_state } from './commonOp'
+import { Store$ } from '../data/store'
 
 export interface Blog extends Props<any> {
   props: Data['blog']
@@ -40,7 +40,7 @@ export const Blog = ({
             <Button
               name={'写新日志'}
               style={style.button}
-              onClick={() => Store.pipe(blog_state('new'))}
+              onClick={() => Store$.pipe(blog_state('new'))}
             />
           </div>
           <div>
@@ -53,7 +53,7 @@ export const Blog = ({
           unactive={tabVcss.unactive}
           current={tabcur}
           onClick={index =>
-            Store.pipe(
+            Store$.pipe(
               blog_tab_index(index),
               blog_content_state('out')
             )

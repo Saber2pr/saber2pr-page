@@ -1,9 +1,9 @@
 import React, { CSSProperties } from 'react'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { Store } from '../../data/observable'
-import { Data } from '../../type'
+import { Data } from '../../interface'
 import { blog_content_state, blog_state } from '../commonOp'
+import { Store$ } from '../../data/store'
 
 interface Editor {
   props: Data['blog']
@@ -34,7 +34,7 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
     color: p.color
   }
   const save = () =>
-    Store.pipe(
+    Store$.pipe(
       data => {
         if (blogState === 'new') {
           if (data.blog.find(b => b.name === EditContent.name)) {
@@ -84,7 +84,7 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
         style={button}
         name={'返回'}
         onClick={() =>
-          Store.pipe(
+          Store$.pipe(
             blogState === 'view'
               ? blog_content_state('enter')
               : blog_content_state('out'),

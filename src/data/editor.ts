@@ -1,5 +1,5 @@
 import { Terminal, File } from 'saber-node'
-import { Data } from '../type'
+import { Data } from '../interface'
 
 const DATA = `${process.cwd()}/src/data/data.json`
 

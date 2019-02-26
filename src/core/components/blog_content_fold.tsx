@@ -2,13 +2,13 @@ import React from 'react'
 import { Blog } from '../blog'
 import { Fold } from '../utils/fold'
 import { Anchor } from '../utils/anchor'
-import { Data } from '../../type'
-import { Store } from '../../data/observable'
+import { Data } from '../../interface'
 import {
   blog_content_index,
   blog_content_state,
   blog_tab_index
 } from '../commonOp'
+import { Store$ } from '../../data/store'
 
 const record = (cur: number, size: number) =>
   (parseInt(String(cur / size)) + 1) * size
@@ -33,7 +33,7 @@ export const ContentFold = ({ props, style, contentCur, tabcur }: FoldNode) => {
             href={'#'}
             style={style}
             onClick={() =>
-              Store.pipe(
+              Store$.pipe(
                 blog_content_index(index),
                 blog_tab_index(tabcur),
                 blog_content_state('enter')

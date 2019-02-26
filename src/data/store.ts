@@ -1,13 +1,14 @@
-const data: Data = require('../../src/data/data.json')
+import { Data } from '../interface'
 import { Observable } from 'saber-observable'
-import { Data } from '../type'
 import { Ajax } from 'saber-xhr'
+const data: Data = require(`../../src/data/data.json`)
 
-export const Store = new Observable(data)
+export const Store$ = new Observable(data)
 
+// get data from server
 Ajax('/src/data/data.json')
   .then(value =>
-    Store.pipe(() => {
+    Store$.pipe(() => {
       const data: Data = JSON.parse(value)
       data.common.tab_cur = 0
       return data
@@ -15,10 +16,11 @@ Ajax('/src/data/data.json')
   )
   .catch(err => {
     console.error('connect server fail!', err)
-    Store.pipe()
+    Store$.dispatch()
   })
 
-Store.subscribe(data => {
+// post data to server
+Store$.subscribe(data => {
   Ajax('/src/data/data.json', JSON.stringify(data))
     .then(() => console.log('post ok!'))
     .catch(err => console.error('post fail!', err))

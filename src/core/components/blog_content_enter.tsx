@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { Store } from '../../data/observable'
 import { CodeText } from '../utils/codeText'
-import { Data } from '../../type'
+import { Data } from '../../interface'
 import {
   blog_content_state,
   blog_content_del,
   blog_content_index
 } from '../commonOp'
+import { Store$ } from '../../data/store'
 
 interface ContentEnter {
   props: Data['blog']
@@ -28,7 +28,7 @@ export const ContentEnter = ({ props, style, current }: ContentEnter) => {
         name="编辑"
         style={button}
         onClick={() =>
-          Store.pipe(
+          Store$.pipe(
             blog_content_state('edit'),
             blog_content_index(current)
           )
@@ -41,7 +41,7 @@ export const ContentEnter = ({ props, style, current }: ContentEnter) => {
           if (delState === '删除') {
             setDelState('确定删除？')
           } else if (delState === '确定删除？') {
-            Store.pipe(
+            Store$.pipe(
               blog_content_del(blog.name),
               blog_content_state('out')
             )
@@ -50,7 +50,7 @@ export const ContentEnter = ({ props, style, current }: ContentEnter) => {
       />
       <Button
         name={'返回'}
-        onClick={() => Store.pipe(blog_content_state('out'))}
+        onClick={() => Store$.pipe(blog_content_state('out'))}
         style={button}
       />
     </div>
