@@ -1,6 +1,6 @@
 {
   "name": "saber2pr-page",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "saber2pr's webpage",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "typescript": "^3.2.1",
     "uglify-js": "^3.4.9"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.1",
     "react": "^16.8.2",
