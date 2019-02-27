@@ -1,4 +1,4 @@
-import { IState } from '../interface'
+import { IState } from './IState'
 import { Observable } from 'saber-observable'
 import { Ajax } from 'saber-xhr'
 const State: IState = require(`../../src/store/state.json`)

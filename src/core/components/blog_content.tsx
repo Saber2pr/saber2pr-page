@@ -1,5 +1,5 @@
 import React from 'react'
-import { IState } from '../../interface'
+import { IState } from '../../store/IState'
 import { Blog } from '../blog'
 import { ContentEditor } from './blog_content_edit'
 import { ContentEnter } from './blog_content_enter'

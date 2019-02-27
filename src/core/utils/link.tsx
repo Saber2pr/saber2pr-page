@@ -1,7 +1,7 @@
 import React, { Props } from 'react'
 import { Anchor } from './anchor'
 import { Columns } from './column'
-import { IState } from '../../interface'
+import { IState } from '../../store/IState'
 import { Fold } from './fold'
 import { Style } from './type'
 

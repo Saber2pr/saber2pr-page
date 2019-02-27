@@ -1,5 +1,5 @@
 import { Terminal, File } from 'saber-node'
-import { IState } from '../interface'
+import { IState } from './IState'
 
 const DATA = `${process.cwd()}/src/store/state.json`
 

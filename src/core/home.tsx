@@ -1,5 +1,5 @@
 import React, { Props } from 'react'
-import { IState } from '../interface'
+import { IState } from '../store/IState'
 import { Link } from './utils/link'
 import { Style } from './utils/type'
 

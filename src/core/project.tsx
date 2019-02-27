@@ -1,5 +1,5 @@
 import React, { Props } from 'react'
-import { IState } from '../interface'
+import { IState } from '../store/IState'
 import { Store$ } from '../store/store'
 import { LinkImg } from './utils/link'
 import { Columns } from './utils/column'

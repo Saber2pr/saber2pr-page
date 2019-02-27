@@ -1,4 +1,4 @@
-import { IState } from '../interface'
+import { IState } from '../store/IState'
 
 export const tab_index = (index: number) => (state: IState) => {
   state.common.tabCur = index
@@ -24,9 +24,7 @@ export const blog_content_index = (index: number) => (state: IState) => {
   return state
 }
 
-export const blog_content_del = (type: string, name: string) => (
-  state: IState
-) => {
+export const blog_content_del = (name: string) => (state: IState) => {
   state.blog.items = state.blog.items.filter(b => b.name !== name)
   return state
 }

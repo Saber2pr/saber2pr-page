@@ -1,5 +1,5 @@
 import React, { Props } from 'react'
-import { IState } from '../interface'
+import { IState } from '../store/IState'
 import { Style } from './utils/type'
 import { ContentEditor } from './components/blog_content_edit'
 import { Header } from './components/blog_header'
