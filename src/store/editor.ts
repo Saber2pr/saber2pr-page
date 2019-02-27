@@ -1,9 +1,9 @@
 import { Terminal, File } from 'saber-node'
-import { Data } from '../interface'
+import { IState } from '../interface'
 
-const DATA = `${process.cwd()}/src/data/data.json`
+const DATA = `${process.cwd()}/src/store/state.json`
 
-const EDITOR = File.Json.pipe<Data>(DATA)
+const EDITOR = File.Json.pipe<IState>(DATA)
 
 const createOptions = (array: string[]) =>
   ['input the index:']
@@ -116,7 +116,7 @@ async function blog_add() {
   const content = await Terminal.getUserInput('content: ')
   try {
     await EDITOR(json => {
-      json.blog.unshift({ name, type, content })
+      json.blog.items.unshift({ name, type, content })
       return json
     })
   } catch (error) {
@@ -129,8 +129,7 @@ async function blog_del() {
   const name = await Terminal.getUserInput('name: ')
   try {
     await EDITOR(json => {
-      const blogs = json.blog.filter(b => b.name !== name)
-      json.blog = blogs
+      json.blog.items = json.blog.items.filter(b => b.name !== name)
       return json
     })
   } catch (error) {

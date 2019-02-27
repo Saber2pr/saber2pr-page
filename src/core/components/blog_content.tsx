@@ -1,46 +1,29 @@
 import React from 'react'
+import { IState } from '../../interface'
 import { Blog } from '../blog'
 import { ContentEditor } from './blog_content_edit'
 import { ContentEnter } from './blog_content_enter'
 import { ContentFold } from './blog_content_fold'
-import { Data } from '../../interface'
 
 interface Content {
-  props: Data['blog']
-  style: Blog['style']
-  state: Data['common']['blog_contentState']
-  blogState: Data['common']['blogState']
-  contentCur: Data['common']['blog_contentCur']
-  tabcur: Data['common']['blog_tabcur']
+  style: Pick<
+    Blog['style'],
+    'button' | 'div' | 'hr' | 'a' | 'p' | 'pre' | 'textarea'
+  >
+  state: Pick<
+    IState['blog'],
+    'contentState' | 'items' | 'tabCur' | 'blogState' | 'contentCur'
+  >
 }
 
-export const Content = ({
-  props,
-  style,
-  state,
-  contentCur,
-  blogState,
-  tabcur
-}: Content) => {
-  if (state === 'out') {
-    return (
-      <ContentFold
-        props={props}
-        style={style}
-        contentCur={contentCur}
-        tabcur={tabcur}
-      />
-    )
-  } else if (state === 'enter') {
-    return <ContentEnter props={props} style={style} current={contentCur} />
-  } else if (state === 'edit') {
-    return (
-      <ContentEditor
-        props={props}
-        style={style}
-        current={contentCur}
-        blogState={blogState}
-      />
-    )
+export const Content = ({ state, style }: Content) => {
+  const { button, div, hr, a, p, pre, textarea } = style
+  const { contentState } = state
+  if (contentState === 'out') {
+    return <ContentFold state={state} style={{ a, button, div, hr }} />
+  } else if (contentState === 'enter') {
+    return <ContentEnter state={state} style={{ button, p, pre }} />
+  } else if (contentState === 'edit') {
+    return <ContentEditor state={state} style={{ button, p, textarea }} />
   }
 }

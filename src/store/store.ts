@@ -1,16 +1,16 @@
-import { Data } from '../interface'
+import { IState } from '../interface'
 import { Observable } from 'saber-observable'
 import { Ajax } from 'saber-xhr'
-const data: Data = require(`../../src/data/data.json`)
+const State: IState = require(`../../src/store/state.json`)
 
-export const Store$ = new Observable(data)
+export const Store$ = new Observable(State)
 
 // get data from server
 Ajax('/src/data/data.json')
   .then(value =>
     Store$.pipe(() => {
-      const data: Data = JSON.parse(value)
-      data.common.tab_cur = 0
+      const data: IState = JSON.parse(value)
+      data.common.tabCur = 0
       return data
     })
   )

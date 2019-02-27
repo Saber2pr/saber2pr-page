@@ -1,41 +1,40 @@
 import React from 'react'
+import { Store$ } from '../../store/store'
+import { IState } from '../../interface'
 import { Blog } from '../blog'
 import { Fold } from '../utils/fold'
 import { Anchor } from '../utils/anchor'
-import { Data } from '../../interface'
 import {
   blog_content_index,
   blog_content_state,
   blog_tab_index
 } from '../commonOp'
-import { Store$ } from '../../data/store'
 
 const record = (cur: number, size: number) =>
   (parseInt(String(cur / size)) + 1) * size
 
 interface FoldNode {
-  props: Data['blog']
-  style: Blog['style']
-  contentCur: Data['common']['blog_contentCur']
-  tabcur: Data['common']['blog_tabcur']
+  style: Pick<Blog['style'], 'div' | 'hr' | 'a' | 'button'>
+  state: Pick<IState['blog'], 'items' | 'contentCur' | 'tabCur'>
 }
 
-export const ContentFold = ({ props, style, contentCur, tabcur }: FoldNode) => {
-  const { div, hr } = style
+export const ContentFold = ({ state, style }: FoldNode) => {
+  const { div, hr, a, button } = style
+  const { items, contentCur, tabCur } = state
   return (
     <Fold
-      props={props}
+      props={items}
       maxSize={record(contentCur, 6)}
       render={({ name }, index) => (
         <div style={div}>
           <Anchor
             name={name}
             href={'#'}
-            style={style}
+            style={{ a }}
             onClick={() =>
               Store$.pipe(
                 blog_content_index(index),
-                blog_tab_index(tabcur),
+                blog_tab_index(tabCur),
                 blog_content_state('enter')
               )
             }
@@ -43,7 +42,7 @@ export const ContentFold = ({ props, style, contentCur, tabcur }: FoldNode) => {
           <hr style={hr} />
         </div>
       )}
-      style={style}
+      style={{ button }}
     />
   )
 }

@@ -1,7 +1,7 @@
 import React, { Props, useState } from 'react'
-import { Data } from '../interface'
+import { IState } from '../interface'
+import { Store$ } from '../store/store'
 import { TabV, Tab } from './utils/tab'
-import { tabVcss } from '../css/css'
 import { find, Search } from './utils/search'
 import { Button } from './utils/button'
 import { Style } from './utils/type'
@@ -9,32 +9,21 @@ import { Columns } from './utils/column'
 import { Content } from './components/blog_content'
 import { ContentEditor } from './components/blog_content_edit'
 import { blog_state, blog_tab_index, blog_content_state } from './commonOp'
-import { Store$ } from '../data/store'
+import { tabVcss } from '../css/css'
 
 export interface Blog extends Props<any> {
-  props: Data['blog']
   style: Style<
     'div' | 'hr' | 'button' | 'a' | 'p' | 'input' | 'textarea' | 'pre'
   >
-  tabcur: number
-  contentcur: number
-  blogState: Data['common']['blogState']
-  contentState: Data['common']['blog_contentState']
+  state: IState['blog']
 }
 
-export const Blog = ({
-  props,
-  style,
-  tabcur,
-  contentcur,
-  blogState,
-  contentState
-}: Blog) => {
-  const { div } = style
-  const [data, setData] = useState(props)
+export const Blog = ({ state, style }: Blog) => {
+  const { tabCur, blogState, items } = state
+  const [data, setData] = useState(items)
   const view = (
     <>
-      <div style={div}>
+      <div style={style.div}>
         <Columns props={{ size: 2, col: '25% 75%' }}>
           <div>
             <Button
@@ -44,14 +33,14 @@ export const Blog = ({
             />
           </div>
           <div>
-            <Search props={props} onChange={v => setData(v)} style={style} />
+            <Search props={items} onChange={v => setData(v)} style={style} />
           </div>
         </Columns>
         <TabV
           col={'25% 75%'}
           active={tabVcss.active}
           unactive={tabVcss.unactive}
-          current={tabcur}
+          current={tabCur}
           onClick={index =>
             Store$.pipe(
               blog_tab_index(index),
@@ -62,12 +51,11 @@ export const Blog = ({
           {Array.from(new Set(data.map(v => v.type))).map(t => (
             <Tab name={t}>
               <Content
-                props={find(data, v => v.type === t)}
+                state={{
+                  ...state,
+                  items: find(data, v => v.type === t)
+                }}
                 style={style}
-                state={contentState}
-                contentCur={contentcur}
-                tabcur={tabcur}
-                blogState={blogState}
               />
             </Tab>
           ))}
@@ -79,13 +67,8 @@ export const Blog = ({
     return view
   } else if (blogState === 'new') {
     return (
-      <div style={div}>
-        <ContentEditor
-          props={data}
-          style={style}
-          current={contentcur}
-          blogState={blogState}
-        />
+      <div style={style.div}>
+        <ContentEditor state={state} style={style} />
       </div>
     )
   }

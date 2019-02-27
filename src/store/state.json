@@ -18,63 +18,69 @@
       "href": "https://www.zhihu.com/people/li-li-23-53-81/activities"
     }]
   },
-  "blog": [{
-    "name": "插入代码块",
-    "type": "功能测试",
-    "content": "先导入react\n```ts\nimport React, { Props, CSSProperties } from 'react'\nimport { Style } from './type'\n```\n\n定义接口：\n```ts\nexport interface CodeText extends Props<any> {\n  content: string\n  style: Style<'p' | 'pre'>\n  start?: string\n  end?: string\n}\n```\n\n实现接口\n```ts\nexport const CodeText = ({ content, style, start, end }: CodeText) => {\n  const { p, pre } = style\n  const _start = start || '\\`\\`\\`ts'\n  const _end = end || '\\`\\`\\`'\n  const commonstyle: CSSProperties = {\n    textAlign: 'left'\n  }\n  const pstyle: CSSProperties = {\n    ...commonstyle,\n    ...p\n  }\n  const prestyle: CSSProperties = {\n    ...commonstyle,\n    ...pre\n  }\n  return (\n    <>\n      {content.split(_start).map(c => {\n        if (c.includes(_end)) {\n          const result = c.split(_end)\n          return (\n            <>\n              <pre style={prestyle}>{result[0]}</pre>\n              <p style={pstyle}>{result[1]}</p>\n            </>\n          )\n        } else {\n          return <p style={pstyle}>{c}</p>\n        }\n      })}\n    </>\n  )\n}\n```"
-  }, {
-    "name": "第二次ajax测试",
-    "type": "前后端交互测试",
-    "content": "用于前端页面持久化。"
-  }, {
-    "name": "测试多行文本",
-    "type": "开发日志",
-    "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染。Blog | Project 页面内容添加方式为nodejs脚本，json对象的序列化与反序列化并写入json文件持久化。 项目的单元工具（utils）已经同步到npm。"
-  }, {
-    "name": "测试插入",
-    "type": "开发日志",
-    "content": "测试添加新内容。"
-  }, {
-    "name": "测试",
-    "type": "开发日志",
-    "content": "这是测试editor脚本。"
-  }, {
-    "name": "测试2",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（2）。"
-  }, {
-    "name": "测试3",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（3）。"
-  }, {
-    "name": "测试4",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（4）。"
-  }, {
-    "name": "测试5",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（5）。"
-  }, {
-    "name": "测试6",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（6）。"
-  }, {
-    "name": "测试7",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（7）。"
-  }, {
-    "name": "测试8",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（8）。"
-  }, {
-    "name": "测试9",
-    "type": "开发日志",
-    "content": "这是测试editor脚本（9）。"
-  }, {
-    "name": "内容测试",
-    "type": "分类测试",
-    "content": "这是测试editor脚本（7）。"
-  }],
+  "blog": {
+    "items": [{
+      "name": "插入代码块",
+      "type": "功能测试",
+      "content": "先导入react\n```ts\nimport React, { Props, CSSProperties } from 'react'\nimport { Style } from './type'\n```\n\n定义接口：\n```ts\nexport interface CodeText extends Props<any> {\n  content: string\n  style: Style<'p' | 'pre'>\n  start?: string\n  end?: string\n}\n```\n\n实现接口\n```ts\nexport const CodeText = ({ content, style, start, end }: CodeText) => {\n  const { p, pre } = style\n  const _start = start || '\\`\\`\\`ts'\n  const _end = end || '\\`\\`\\`'\n  const commonstyle: CSSProperties = {\n    textAlign: 'left'\n  }\n  const pstyle: CSSProperties = {\n    ...commonstyle,\n    ...p\n  }\n  const prestyle: CSSProperties = {\n    ...commonstyle,\n    ...pre\n  }\n  return (\n    <>\n      {content.split(_start).map(c => {\n        if (c.includes(_end)) {\n          const result = c.split(_end)\n          return (\n            <>\n              <pre style={prestyle}>{result[0]}</pre>\n              <p style={pstyle}>{result[1]}</p>\n            </>\n          )\n        } else {\n          return <p style={pstyle}>{c}</p>\n        }\n      })}\n    </>\n  )\n}\n```"
+    }, {
+      "name": "第二次ajax测试",
+      "type": "前后端交互测试",
+      "content": "用于前端页面持久化。"
+    }, {
+      "name": "测试多行文本",
+      "type": "开发日志",
+      "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染。Blog | Project 页面内容添加方式为nodejs脚本，json对象的序列化与反序列化并写入json文件持久化。 项目的单元工具（utils）已经同步到npm。"
+    }, {
+      "name": "测试插入",
+      "type": "开发日志",
+      "content": "测试添加新内容。"
+    }, {
+      "name": "测试",
+      "type": "开发日志",
+      "content": "这是测试editor脚本。"
+    }, {
+      "name": "测试2",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（2）。"
+    }, {
+      "name": "测试3",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（3）。"
+    }, {
+      "name": "测试4",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（4）。"
+    }, {
+      "name": "测试5",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（5）。"
+    }, {
+      "name": "测试6",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（6）。"
+    }, {
+      "name": "测试7",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（7）。"
+    }, {
+      "name": "测试8",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（8）。"
+    }, {
+      "name": "测试9",
+      "type": "开发日志",
+      "content": "这是测试editor脚本（9）。"
+    }, {
+      "name": "内容测试",
+      "type": "分类测试",
+      "content": "这是测试editor脚本（7）。"
+    }],
+    "tabCur": 0,
+    "contentCur": 0,
+    "blogState": "view",
+    "contentState": "out"
+  },
   "project": [{
     "name": "2048",
     "href": "https://saber2pr.github.io/MyWeb/build/2048/",
@@ -151,10 +157,6 @@
   },
   "common": {
     "footer": "github.com/Saber2pr",
-    "tab_cur": 0,
-    "blog_tabcur": 0,
-    "blog_contentCur": 0,
-    "blogState": "view",
-    "blog_contentState": "out"
+    "tabCur": 0
   }
 }

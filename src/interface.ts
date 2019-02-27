@@ -1,4 +1,4 @@
-export interface Data {
+export interface IState {
   home: {
     title: string
     logo: string
@@ -10,10 +10,16 @@ export interface Data {
     }[]
   }
   blog: {
-    name: string
-    type: string
-    content: string
-  }[]
+    items: {
+      name: string
+      type: string
+      content: string
+    }[]
+    tabCur: number
+    contentCur: number
+    blogState: 'view' | 'new'
+    contentState: 'enter' | 'out' | 'edit'
+  }
   project: {
     name: string
     href: string
@@ -32,10 +38,6 @@ export interface Data {
   }
   common: {
     footer: string
-    tab_cur: number
-    blog_tabcur: number
-    blog_contentCur: number
-    blogState: 'view' | 'new'
-    blog_contentState: 'enter' | 'out' | 'edit'
+    tabCur: number
   }
 }

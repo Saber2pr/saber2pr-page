@@ -1,35 +1,35 @@
-import { Data } from '../interface'
+import { IState } from '../interface'
 
-export const tab_index = (index: number) => (data: Data) => {
-  data.common.tab_cur = index
-  return data
+export const tab_index = (index: number) => (state: IState) => {
+  state.common.tabCur = index
+  return state
 }
 
-export const blog_content_state = (
-  type: Data['common']['blog_contentState']
-) => (data: Data) => {
-  data.common.blog_contentState = type
-  return data
-}
-
-export const blog_content_index = (index: number) => (data: Data) => {
-  data.common.blog_contentCur = index
-  return data
-}
-
-export const blog_content_del = (name: string) => (data: Data) => {
-  data.blog = data.blog.filter(b => b.name !== name)
-  return data
-}
-
-export const blog_state = (type: Data['common']['blogState']) => (
-  data: Data
+export const blog_content_state = (type: IState['blog']['contentState']) => (
+  state: IState
 ) => {
-  data.common.blogState = type
-  return data
+  state.blog.contentState = type
+  return state
 }
 
-export const blog_tab_index = (index: number) => (data: Data) => {
-  data.common.blog_tabcur = index
-  return data
+export const blog_content_index = (index: number) => (state: IState) => {
+  state.blog.contentCur = index
+  return state
+}
+
+export const blog_content_del = (name: string) => (state: IState) => {
+  state.blog.items = state.blog.items.filter(b => b.name !== name)
+  return state
+}
+
+export const blog_state = (type: IState['blog']['blogState']) => (
+  state: IState
+) => {
+  state.blog.blogState = type
+  return state
+}
+
+export const blog_tab_index = (index: number) => (state: IState) => {
+  state.blog.tabCur = index
+  return state
 }

@@ -1,48 +1,48 @@
 import React, { useState } from 'react'
+import { IState } from '../../interface'
+import { Store$ } from '../../store/store'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
 import { CodeText } from '../utils/codeText'
-import { Data } from '../../interface'
 import {
   blog_content_state,
   blog_content_del,
   blog_content_index
 } from '../commonOp'
-import { Store$ } from '../../data/store'
 
 interface ContentEnter {
-  props: Data['blog']
-  style: Blog['style']
-  current: number
+  style: Pick<Blog['style'], 'p' | 'button' | 'pre'>
+  state: Pick<IState['blog'], 'items' | 'contentCur'>
 }
 
-export const ContentEnter = ({ props, style, current }: ContentEnter) => {
-  const { p, button } = style
-  const blog = props[current] || props[0]
-  const [delState, setDelState] = useState<'删除' | '确定删除？'>('删除')
+export const ContentEnter = ({ state, style }: ContentEnter) => {
+  const { p, button, pre } = style
+  const { items, contentCur } = state
+  const { name, content } = items[contentCur] || items[0]
+  const [label, setLabel] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
-      <h1 style={p}>{blog.name}</h1>
-      <CodeText content={blog.content} style={style} />
+      <h1 style={p}>{name}</h1>
+      <CodeText content={content} style={{ p, pre }} />
       <Button
         name="编辑"
         style={button}
         onClick={() =>
           Store$.pipe(
             blog_content_state('edit'),
-            blog_content_index(current)
+            blog_content_index(contentCur)
           )
         }
       />
       <Button
-        name={delState}
+        name={label}
         style={button}
         onClick={() => {
-          if (delState === '删除') {
-            setDelState('确定删除？')
-          } else if (delState === '确定删除？') {
+          if (label === '删除') {
+            setLabel('确定删除？')
+          } else if (label === '确定删除？') {
             Store$.pipe(
-              blog_content_del(blog.name),
+              blog_content_del(name),
               blog_content_state('out')
             )
           }

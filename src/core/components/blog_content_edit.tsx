@@ -1,22 +1,21 @@
 import React, { CSSProperties } from 'react'
+import { IState } from '../../interface'
+import { Store$ } from '../../store/store'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { Data } from '../../interface'
 import { blog_content_state, blog_state } from '../commonOp'
-import { Store$ } from '../../data/store'
 
 interface Editor {
-  props: Data['blog']
-  style: Blog['style']
-  current: number
-  blogState: Data['common']['blogState']
+  style: Pick<Blog['style'], 'button' | 'textarea' | 'p'>
+  state: Pick<IState['blog'], 'blogState' | 'contentCur' | 'items'>
 }
 
-export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
+export const ContentEditor = ({ state, style }: Editor) => {
+  const { blogState, contentCur, items } = state
   const { button, textarea, p } = style
   const EditContent =
     blogState === 'view'
-      ? props[current]
+      ? items[contentCur]
       : {
           name: '标题...',
           type: '分类...',
@@ -37,14 +36,16 @@ export const ContentEditor = ({ props, style, current, blogState }: Editor) => {
     Store$.pipe(
       data => {
         if (blogState === 'new') {
-          if (data.blog.find(b => b.name === EditContent.name)) {
+          if (data.blog.items.find(b => b.name === EditContent.name)) {
             alert('标题名已存在！')
           } else {
-            data.common.blog_tabcur = 0
-            data.blog.unshift(EditContent)
+            data.blog.tabCur = 0
+            data.blog.items.unshift(EditContent)
           }
         } else if (blogState === 'view') {
-          const index = data.blog.map(b => b.name).indexOf(EditContent.name)
+          const index = data.blog.items
+            .map(b => b.name)
+            .indexOf(EditContent.name)
           data.blog[index] = EditContent
         }
         return data

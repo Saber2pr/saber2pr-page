@@ -1,4 +1,7 @@
 import React, { Props } from 'react'
+import { IState } from './interface'
+import { Store$ } from './store/store'
+import { tab_index } from './core/commonOp'
 import { Tabs, Tab } from './core/utils/tab'
 import { Home } from './core/home'
 import { Project } from './core/project'
@@ -12,24 +15,14 @@ import {
   blogcss,
   homecss
 } from './css/css'
-import { Data } from './interface'
-import { tab_index } from './core/commonOp'
-import { Store$ } from './data/store'
 
 interface Application extends Props<any> {
-  state: Data
+  state: IState
 }
 
 export const Application = ({ state }: Application) => {
   const { common, home, blog, project, about } = state
-  const {
-    footer,
-    tab_cur,
-    blog_tabcur,
-    blog_contentCur,
-    blogState,
-    blog_contentState
-  } = common
+  const { footer, tabCur } = common
   const { div } = globalcss
   return (
     <div style={div}>
@@ -37,27 +30,20 @@ export const Application = ({ state }: Application) => {
         active={tabscss.active}
         unactive={tabscss.unactive}
         bottom={footer}
-        current={tab_cur}
+        current={tabCur}
         onClick={index => Store$.pipe(tab_index(index))}
       >
         <Tab name="Home">
-          <Home props={home} style={homecss} />
+          <Home state={home} style={homecss} />
         </Tab>
         <Tab name="Blog">
-          <Blog
-            props={blog}
-            style={blogcss}
-            tabcur={blog_tabcur}
-            blogState={blogState}
-            contentState={blog_contentState}
-            contentcur={blog_contentCur}
-          />
+          <Blog state={blog} style={blogcss} />
         </Tab>
         <Tab name="Project">
-          <Project props={project} style={projectcss} />
+          <Project state={project} style={projectcss} />
         </Tab>
         <Tab name="About">
-          <About props={about} style={aboutcss} />
+          <About state={about} style={aboutcss} />
         </Tab>
       </Tabs>
     </div>
