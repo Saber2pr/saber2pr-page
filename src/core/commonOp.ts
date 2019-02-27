@@ -5,6 +5,13 @@ export const tab_index = (index: number) => (state: IState) => {
   return state
 }
 
+export const blog_items = (items: IState['blog']['items']) => (
+  state: IState
+) => {
+  state.blog.items = items
+  return state
+}
+
 export const blog_content_state = (type: IState['blog']['contentState']) => (
   state: IState
 ) => {
@@ -17,7 +24,9 @@ export const blog_content_index = (index: number) => (state: IState) => {
   return state
 }
 
-export const blog_content_del = (name: string) => (state: IState) => {
+export const blog_content_del = (type: string, name: string) => (
+  state: IState
+) => {
   state.blog.items = state.blog.items.filter(b => b.name !== name)
   return state
 }

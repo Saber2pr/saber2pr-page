@@ -17,13 +17,15 @@ interface Content {
 }
 
 export const Content = ({ state, style }: Content) => {
-  const { button, div, hr, a, p, pre, textarea } = style
   const { contentState } = state
-  if (contentState === 'out') {
-    return <ContentFold state={state} style={{ a, button, div, hr }} />
-  } else if (contentState === 'enter') {
-    return <ContentEnter state={state} style={{ button, p, pre }} />
-  } else if (contentState === 'edit') {
-    return <ContentEditor state={state} style={{ button, p, textarea }} />
+  switch (contentState) {
+    case 'edit':
+      return <ContentEditor state={state} style={style} />
+    case 'enter':
+      return <ContentEnter state={state} style={style} />
+    case 'out':
+      return <ContentFold state={state} style={style} />
+    default:
+      throw new Error('contentState error')
   }
 }

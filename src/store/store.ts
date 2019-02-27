@@ -6,7 +6,7 @@ const State: IState = require(`../../src/store/state.json`)
 export const Store$ = new Observable(State)
 
 // get data from server
-Ajax('/src/data/data.json')
+Ajax('/src/store/state.json')
   .then(value =>
     Store$.pipe(() => {
       const data: IState = JSON.parse(value)
@@ -15,13 +15,13 @@ Ajax('/src/data/data.json')
     })
   )
   .catch(err => {
-    console.error('connect server fail!', err)
+    console.warn('connect server fail!', err)
     Store$.dispatch()
   })
 
 // post data to server
 Store$.subscribe(data => {
-  Ajax('/src/data/data.json', JSON.stringify(data))
+  Ajax('/src/store/state.json', JSON.stringify(data))
     .then(() => console.log('post ok!'))
-    .catch(err => console.error('post fail!', err))
+    .catch(err => console.warn('post fail!', err))
 })

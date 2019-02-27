@@ -32,6 +32,7 @@ export function Fold<T>({ props, maxSize, style, render }: Fold<T>) {
             onClick={() => setMaxSize(maxsize * 2)}
             onMouseOver={over}
             onMouseOut={out(button)}
+            key={0}
           >
             {maxsize < props.length ? '更多' : '到底了'}
           </button>

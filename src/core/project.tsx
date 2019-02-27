@@ -1,8 +1,9 @@
-import React, { useState, Props } from 'react'
+import React, { Props } from 'react'
+import { IState } from '../interface'
+import { Store$ } from '../store/store'
 import { LinkImg } from './utils/link'
 import { Columns } from './utils/column'
 import { Search } from './utils/search'
-import { IState } from '../interface'
 import { Style } from './utils/type'
 
 export interface Project extends Props<any> {
@@ -11,17 +12,20 @@ export interface Project extends Props<any> {
 }
 
 export const Project = ({ state, style }: Project) => {
-  const { p, a, div, img, input, button } = style
-  const [searched, setSearched] = useState(state)
+  const { p } = style
   return (
     <>
-      <Search props={state} onChange={v => setSearched(v)} style={{ input }} />
-      <Columns props={{ size: 3 }} style={{ div }}>
+      <Search
+        props={Store$.getInitState().project}
+        onChange={v => Store$.setState({ project: v })}
+        style={style}
+      />
+      <Columns props={{ size: 3 }} style={style}>
         <div style={p}>Name</div>
         <div style={p}>View</div>
         <div style={p}>Infor</div>
       </Columns>
-      <LinkImg props={searched} style={{ a, img, button, div, p }} />
+      <LinkImg props={state} style={style} />
     </>
   )
 }

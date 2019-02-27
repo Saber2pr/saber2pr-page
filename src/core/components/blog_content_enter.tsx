@@ -16,14 +16,14 @@ interface ContentEnter {
 }
 
 export const ContentEnter = ({ state, style }: ContentEnter) => {
-  const { p, button, pre } = style
+  const { p, button } = style
   const { items, contentCur } = state
-  const { name, content } = items[contentCur] || items[0]
+  const { name, content, type } = items[contentCur] || items[0]
   const [label, setLabel] = useState<'删除' | '确定删除？'>('删除')
   return (
     <div>
       <h1 style={p}>{name}</h1>
-      <CodeText content={content} style={{ p, pre }} />
+      <CodeText content={content} style={style} />
       <Button
         name="编辑"
         style={button}
@@ -42,7 +42,7 @@ export const ContentEnter = ({ state, style }: ContentEnter) => {
             setLabel('确定删除？')
           } else if (label === '确定删除？') {
             Store$.pipe(
-              blog_content_del(name),
+              blog_content_del(type, name),
               blog_content_state('out')
             )
           }

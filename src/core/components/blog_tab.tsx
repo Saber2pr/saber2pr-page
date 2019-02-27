@@ -1,0 +1,48 @@
+import React, { Props } from 'react'
+import { IState } from '../../interface'
+import { Store$ } from '../../store/store'
+import { Blog } from '../blog'
+import { TabV, Tab } from '../utils/tab'
+import { Content } from './blog_content'
+import { find } from '../utils/search'
+import { blog_tab_index, blog_content_state } from '../commonOp'
+import { tabVcss } from '../../css/css'
+
+export interface Tabs extends Props<any> {
+  state: IState['blog']
+  style: Pick<
+    Blog['style'],
+    'div' | 'hr' | 'button' | 'a' | 'p' | 'textarea' | 'pre'
+  >
+}
+
+export const TabContent = ({ state, style }: Tabs) => {
+  const { items, tabCur } = state
+  return (
+    <TabV
+      col={'25% 75%'}
+      active={tabVcss.active}
+      unactive={tabVcss.unactive}
+      current={tabCur}
+      onClick={index =>
+        Store$.pipe(
+          blog_tab_index(index),
+          blog_content_state('out')
+        )
+      }
+    >
+      {Array.from(new Set(items.map(v => v.type))).map((t, index) => (
+        <Tab name={t} key={index}>
+          <Content
+            state={{
+              ...state,
+              items: find(items, v => v.type === t)
+            }}
+            style={style}
+            key={index}
+          />
+        </Tab>
+      ))}
+    </TabV>
+  )
+}

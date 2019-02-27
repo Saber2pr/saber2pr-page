@@ -43,8 +43,12 @@ export function Tabs<T>({
         />
       ))
         .concat(children[cur] || children)
-        .concat(<hr style={active.hr} />)
-        .concat(<div style={active.bottom}>{bottom}</div>)}
+        .concat(<hr style={active.hr} key={0} />)
+        .concat(
+          <div style={active.bottom} key={1}>
+            {bottom}
+          </div>
+        )}
     </>
   )
 }
@@ -68,24 +72,22 @@ export const TabV = ({
 }: TabV) => {
   const array = React.Children.toArray(children)
   current = current < array.length ? current : array.length - 1
-  const [cur, update] = useState(current)
   const tabs = array.map((node, index) => (
     <div>
       <Button
-        style={index === cur ? active.button : unactive.button}
+        style={index === current ? active.button : unactive.button}
         key={index}
         onClick={() => {
           !!onClick ? onClick(index) : null
-          update(index)
         }}
         name={(node['props'] as TabProps)['name']}
         activeStyle={active.button}
         unactiveStyle={unactive.button}
-        isactive={index === cur}
+        isactive={index === current}
       />
     </div>
   ))
-  const content = children[cur] || children
+  const content = children[current] || children
   return (
     <Columns props={{ size: 2, col }}>
       <div>{tabs}</div>

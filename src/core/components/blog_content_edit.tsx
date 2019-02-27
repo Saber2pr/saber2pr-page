@@ -46,7 +46,7 @@ export const ContentEditor = ({ state, style }: Editor) => {
           const index = data.blog.items
             .map(b => b.name)
             .indexOf(EditContent.name)
-          data.blog[index] = EditContent
+          data.blog.items[index] = EditContent
         }
         return data
       },

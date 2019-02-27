@@ -19,7 +19,7 @@ interface FoldNode {
 }
 
 export const ContentFold = ({ state, style }: FoldNode) => {
-  const { div, hr, a, button } = style
+  const { div, hr } = style
   const { items, contentCur, tabCur } = state
   return (
     <Fold
@@ -30,7 +30,7 @@ export const ContentFold = ({ state, style }: FoldNode) => {
           <Anchor
             name={name}
             href={'#'}
-            style={{ a }}
+            style={style}
             onClick={() =>
               Store$.pipe(
                 blog_content_index(index),
@@ -42,7 +42,7 @@ export const ContentFold = ({ state, style }: FoldNode) => {
           <hr style={hr} />
         </div>
       )}
-      style={{ button }}
+      style={style}
     />
   )
 }
