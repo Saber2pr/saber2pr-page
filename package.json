@@ -1,6 +1,6 @@
 {
   "name": "saber2pr-page",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "saber2pr's webpage",
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
     "dev": "rollup -c --watch",
     "build": "uglifyjs ./build/bundle.min.js -o ./build/bundle.min.js -m -c",
     "serve": "node ./lib/Server.js",
-    "edit": "node ./lib/data/editor.js"
+    "edit": "node ./lib/data/editor.js",
+    "clc": "rm ./build ./lib -r"
   },
   "devDependencies": {
     "rollup": "^1.2.3",

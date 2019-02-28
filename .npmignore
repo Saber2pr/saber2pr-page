@@ -9,6 +9,8 @@ lib/css
 lib/data/
 lib/Application.*
 lib/Server.*
+lib/main.*
+lib/store
 build/
 tsconfig.json
 rollup.config.js
