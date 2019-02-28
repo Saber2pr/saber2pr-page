@@ -10,10 +10,11 @@ interface Editor {
   state: Pick<IState['blog'], 'blogState' | 'contentCur' | 'items'>
 }
 
-const defaultInput = {
+const defaultInput: Blog['state']['items'][0] = {
   name: '标题...',
   type: '分类...',
-  content: '写新内容...'
+  content: '写新内容...',
+  lastEdit: ''
 }
 
 const save = (
@@ -27,10 +28,12 @@ const save = (
           alert('标题名已存在！')
         } else {
           data.blog.tabCur = 0
+          EditContent.lastEdit = new Date().toLocaleString()
           data.blog.items.unshift(EditContent)
         }
       } else if (blogState === 'view') {
         const index = data.blog.items.map(b => b.name).indexOf(EditContent.name)
+        EditContent.lastEdit = new Date().toLocaleString()
         data.blog.items[index] = EditContent
       }
       return data

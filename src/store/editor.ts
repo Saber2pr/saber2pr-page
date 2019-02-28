@@ -114,9 +114,10 @@ async function blog_add() {
   const name = await Terminal.getUserInput('name: ')
   const type = await Terminal.getUserInput('type: ')
   const content = await Terminal.getUserInput('content: ')
+  const lastEdit = new Date().toLocaleString()
   try {
     await EDITOR(json => {
-      json.blog.items.unshift({ name, type, content })
+      json.blog.items.unshift({ name, type, content, lastEdit })
       return json
     })
   } catch (error) {

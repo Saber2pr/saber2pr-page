@@ -32,7 +32,7 @@ const back = () => Store$.pipe(blog_content_state('out'))
 export const ContentEnter = ({ state, style }: ContentEnter) => {
   const { p, button } = style
   const { items, contentCur } = state
-  const { name, content } = items[contentCur] || items[0]
+  const { name, content, lastEdit } = items[contentCur] || items[0]
   const [label, setLabel] = useState<'删除' | '确定删除？'>('删除')
   const Options = () => (
     <>
@@ -51,10 +51,15 @@ export const ContentEnter = ({ state, style }: ContentEnter) => {
       <Button name={'返回'} onClick={back} style={button} />
     </>
   )
+  const Footer = () => (
+    <p style={{ ...p, color: '#2a334d' }}>{`最后编辑于：${lastEdit}`}</p>
+  )
   return (
     <div>
       <h1 style={p}>{name}</h1>
       <CodeText content={content} style={style} />
+      <br />
+      <Footer />
       <Options />
     </div>
   )

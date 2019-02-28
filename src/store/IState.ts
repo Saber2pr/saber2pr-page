@@ -14,6 +14,7 @@ export interface IState {
       name: string
       type: string
       content: string
+      lastEdit: string
     }[]
     tabCur: number
     contentCur: number
