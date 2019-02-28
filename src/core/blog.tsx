@@ -29,5 +29,6 @@ export const Blog = ({ state, style }: Blog) => {
         </div>
       )
     default:
+    throw new Error('blogState error')
   }
 }
