@@ -41,15 +41,15 @@ export const blogcss: Blog['style'] = {
   },
   input: {
     ...globalcss.input,
-    marginTop: '10px',
-    marginBottom: '15px'
+    marginTop: '20px'
   },
   a: {
     ...globalcss.a,
     margin: '0 auto',
     fontSize: '100%',
     cursor: 'pointer',
-    lineHeight: '10%'
+    lineHeight: '10%',
+    fontFamily: globalcss.p.fontFamily
   },
   p: {
     ...globalcss.p,
@@ -62,6 +62,7 @@ export const blogcss: Blog['style'] = {
     ...globalcss.p,
     fontSize: '105%',
     color: '#6dbb94',
-    margin: '10px auto'
+    margin: '10px auto',
+    fontFamily: ''
   }
 }

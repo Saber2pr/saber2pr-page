@@ -58,13 +58,9 @@ export const ContentEditor = ({ state, style }: Editor) => {
     border: textarea.border,
     marginBottom: '10px'
   }
-  const pcss: CSSProperties = {
-    fontSize: p.fontSize,
-    color: p.color
-  }
   const TitleInput = () => (
     <>
-      <span style={pcss}>标题：</span>
+      <span style={p}>标题：</span>
       <input
         type="text"
         defaultValue={EditContent.name}
@@ -75,7 +71,7 @@ export const ContentEditor = ({ state, style }: Editor) => {
   )
   const TypeInput = () => (
     <>
-      <span style={pcss}>分类：</span>
+      <span style={p}>分类：</span>
       <input
         type="text"
         defaultValue={EditContent.type}

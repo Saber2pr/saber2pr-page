@@ -31,7 +31,8 @@ export const globalcss: Style<
     marginBottom: '30px',
     fontSize: '150%',
     color: '#f8ebc3',
-    lineHeight: '160%'
+    lineHeight: '160%',
+    fontFamily: 'Microsoft Yahei'
   },
   a: {
     fontSize: '150%',
