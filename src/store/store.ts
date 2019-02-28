@@ -1,6 +1,7 @@
 import { IState } from './IState'
 import { Observable } from 'saber-observable'
 import { Ajax } from 'saber-xhr'
+import { common_reset, blog_state_reset } from './operations'
 const State: IState = require(`../../src/store/state.json`)
 
 export const Store$ = new Observable(State)
@@ -8,11 +9,10 @@ export const Store$ = new Observable(State)
 // get data from server
 Ajax('/src/store/state.json')
   .then(value =>
-    Store$.pipe(() => {
-      const data: IState = JSON.parse(value)
-      data.common.tabCur = 0
-      return data
-    })
+    Store$.pipe(
+      common_reset(JSON.parse(value)),
+      blog_state_reset
+    )
   )
   .catch(err => {
     console.warn('connect server fail!', err)

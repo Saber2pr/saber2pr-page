@@ -1,7 +1,21 @@
 import { IState } from './IState'
 
+export const common_reset = (init?: IState) => (state: IState) => {
+  const nextState = Object.assign(state, init || {})
+  nextState.common.tabCur = 0
+  return nextState
+}
+
 export const tab_index = (index: number) => (state: IState) => {
   state.common.tabCur = index
+  return state
+}
+
+export const blog_state_reset = (state: IState) => {
+  state.blog.blogState = 'view'
+  state.blog.contentState = 'out'
+  state.blog.tabCur = 0
+  state.blog.contentCur = 0
   return state
 }
 
