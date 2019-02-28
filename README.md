@@ -27,6 +27,8 @@ npm run build
 
 npm run clc
 
+npm run rebuild
+
 npm run edit
 
 npm run serve

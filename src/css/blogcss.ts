@@ -54,12 +54,14 @@ export const blogcss: Blog['style'] = {
   p: {
     ...globalcss.p,
     fontSize: '90%',
-    color: '#799cb9'
+    color: '#799cb9',
+    margin: '10px auto'
   },
   textarea: globalcss.textarea,
   pre: {
     ...globalcss.p,
     fontSize: '105%',
-    color: '#6dbb94'
+    color: '#6dbb94',
+    margin: '10px auto'
   }
 }

@@ -15,7 +15,8 @@
     "build": "uglifyjs ./build/bundle.min.js -o ./build/bundle.min.js -m -c",
     "serve": "node ./lib/Server.js",
     "edit": "node ./lib/data/editor.js",
-    "clc": "rm ./build ./lib -r"
+    "clc": "rm ./build ./lib -r",
+    "rebuild": "npm run clc && tsc && rollup -c && npm run build"
   },
   "devDependencies": {
     "rollup": "^1.2.3",

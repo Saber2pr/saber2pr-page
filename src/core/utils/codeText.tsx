@@ -1,5 +1,6 @@
 import React, { Props, CSSProperties } from 'react'
 import { Style } from './type'
+import { Para } from './paragraph'
 
 export interface CodeText extends Props<any> {
   content: string
@@ -30,16 +31,14 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
       {content.split(_start).map(c => {
         if (c.includes(_end)) {
           const result = c.split(_end)
-          return (
-            <>
-              <pre>
-                <p style={prestyle}>{result[0]}</p>
-              </pre>
-              <p style={pstyle}>{result[1]}</p>
-            </>
-          )
+          return [
+            <pre>
+              <p style={prestyle}>{result[0]}</p>
+            </pre>,
+            <Para content={result[1]} style={pstyle} />
+          ]
         } else {
-          return <p style={pstyle}>{c}</p>
+          return <Para content={c} style={pstyle} />
         }
       })}
     </>
