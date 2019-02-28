@@ -16,7 +16,10 @@ Ajax('/src/store/state.json')
   )
   .catch(err => {
     console.warn('connect server fail!', err)
-    Store$.dispatch()
+    Store$.pipe(
+      common_reset(),
+      blog_state_reset
+    )
   })
 
 // post data to server
