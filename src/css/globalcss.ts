@@ -80,7 +80,8 @@ export const globalcss: Style<
     appearance: 'none',
     WebkitAppearance: 'none',
     MozAppearance: 'none',
-    lineHeight: '20px'
+    lineHeight: '20px',
+    cursor: 'pointer'
   },
   option: {
     backgroundColor: '#191a21',
