@@ -64,5 +64,12 @@ export const blogcss: Blog['style'] = {
     color: '#6dbb94',
     margin: '10px auto',
     fontFamily: ''
+  },
+  select: {
+    ...globalcss.select,
+    marginTop: '20px'
+  },
+  option: {
+    ...globalcss.option
   }
 }

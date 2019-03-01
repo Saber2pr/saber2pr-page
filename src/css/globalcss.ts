@@ -11,6 +11,8 @@ export const globalcss: Style<
   | 'hr'
   | 'input'
   | 'textarea'
+  | 'select'
+  | 'option'
 > = {
   body: {
     backgroundColor: '#191a21'
@@ -66,9 +68,22 @@ export const globalcss: Style<
   },
   textarea: {
     width: '90%',
-    height: '300px',
+    height: '320px',
     backgroundColor: '#282a36',
     border: '1px solid #2a334d',
     color: '#f8ebc3'
+  },
+  select: {
+    border: '1px solid #282a36',
+    backgroundColor: '#191a21',
+    color: '#6272a4',
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+    lineHeight: '20px'
+  },
+  option: {
+    backgroundColor: '#191a21',
+    color: '#6272a4'
   }
 }

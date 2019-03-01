@@ -7,7 +7,16 @@ import { TabContent } from './components/blog_tab'
 
 export interface Blog extends Props<any> {
   style: Style<
-    'div' | 'hr' | 'button' | 'a' | 'p' | 'input' | 'textarea' | 'pre'
+    | 'div'
+    | 'hr'
+    | 'button'
+    | 'a'
+    | 'p'
+    | 'input'
+    | 'textarea'
+    | 'pre'
+    | 'select'
+    | 'option'
   >
   state: IState['blog']
 }
