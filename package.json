@@ -1,7 +1,7 @@
 {
   "name": "saber2pr-page",
   "version": "0.1.2",
-  "description": "saber2pr's webpage",
+  "description": "saber2pr's webpage utils.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Saber2pr/saber2pr.git"
