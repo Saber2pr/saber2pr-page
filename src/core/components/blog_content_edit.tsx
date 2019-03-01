@@ -5,7 +5,7 @@ import { Blog } from '../blog'
 import { Button } from '../utils/button'
 import { blog_content_state, blog_state } from '../../store/operations'
 
-interface Editor {
+export interface Editor {
   style: Pick<Blog['style'], 'button' | 'textarea' | 'p' | 'select' | 'option'>
   state: Pick<IState['blog'], 'blogState' | 'contentCur' | 'items'>
 }
@@ -53,7 +53,8 @@ const back = (blogState: Blog['state']['blogState']) => () =>
 export const ContentEditor = ({ state, style }: Editor) => {
   const { blogState, contentCur, items } = state
   const { button, textarea, p, select, option } = style
-  const EditContent = blogState === 'view' ? items[contentCur] : defaultInput
+  const EditContent =
+    blogState === 'view' ? items[contentCur] : Object.assign({}, defaultInput)
   const [tInState, setTInState] = useState<'normal' | 'newtype'>('normal')
   const inputcss: CSSProperties = {
     color: textarea.color,

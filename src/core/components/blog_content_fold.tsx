@@ -13,7 +13,7 @@ import {
 const record = (cur: number, size: number) =>
   (parseInt(String(cur / size)) + 1) * size
 
-interface FoldNode {
+export interface FoldNode {
   style: Pick<Blog['style'], 'div' | 'hr' | 'a' | 'button'>
   state: Pick<IState['blog'], 'items' | 'contentCur' | 'tabCur'>
 }

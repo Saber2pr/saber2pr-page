@@ -5,10 +5,18 @@ import { ContentEditor } from './blog_content_edit'
 import { ContentEnter } from './blog_content_enter'
 import { ContentFold } from './blog_content_fold'
 
-interface Content {
+export interface Content {
   style: Pick<
     Blog['style'],
-    'button' | 'div' | 'hr' | 'a' | 'p' | 'pre' | 'textarea'
+    | 'button'
+    | 'div'
+    | 'hr'
+    | 'a'
+    | 'p'
+    | 'pre'
+    | 'textarea'
+    | 'select'
+    | 'option'
   >
   state: Pick<
     IState['blog'],

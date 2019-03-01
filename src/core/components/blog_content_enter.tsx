@@ -10,7 +10,7 @@ import {
   blog_content_index
 } from '../../store/operations'
 
-interface ContentEnter {
+export interface ContentEnter {
   style: Pick<Blog['style'], 'p' | 'button' | 'pre'>
   state: Pick<IState['blog'], 'items' | 'contentCur'>
 }

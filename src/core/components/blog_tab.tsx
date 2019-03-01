@@ -12,7 +12,15 @@ export interface Tabs extends Props<any> {
   state: IState['blog']
   style: Pick<
     Blog['style'],
-    'div' | 'hr' | 'button' | 'a' | 'p' | 'textarea' | 'pre'
+    | 'div'
+    | 'hr'
+    | 'button'
+    | 'a'
+    | 'p'
+    | 'textarea'
+    | 'pre'
+    | 'select'
+    | 'option'
   >
 }
 
