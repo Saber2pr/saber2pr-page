@@ -61,7 +61,7 @@ export const blogcss: Blog['style'] = {
   pre: {
     ...globalcss.p,
     fontSize: '105%',
-    color: '#6dbb94',
+    color: '#8dc0a5',
     margin: '10px auto',
     fontFamily: ''
   },
