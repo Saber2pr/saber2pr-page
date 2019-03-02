@@ -99,7 +99,7 @@
   "about": {
     "title": "说明",
     "content": "这是一个用来组织和导航saber2pr/Repositories的页面，由json数据渲染而成。使用react（16.8.2）编写，配色风格参考Dracula Official。语言为React-Typescript（tsx），层叠样式表为css in js，栅格布局为grid格式。采用函数组件，状态更新使用React-Hooks，状态管理使用Observable订阅观察。tab导航原理为props.children动态渲染，a标签hover原理为onMouseOver & onMouseOut动态切换css阴影，input搜索原理为正则match & children动态渲染，列表折叠原理为数组slice & children动态渲染，代码插入利用pre标签和scroll样式(overflow:hidden)，关键字高亮利用深度搜索原理和正则匹配(详见utils/highlight)。使用json接口，json对象序列化并post到server端持久化，server端使用nodejs-http模块搭建。前端页面默认使用样例假数据。 项目的单元工具（utils）已经同步到npm。",
-    "more": "更多信息请移步github.com/Saber2pr/saber2pr。",
+    "more": "更多信息请移步github.com/Saber2pr/saber2pr.github.io。",
     "contact": "联系",
     "links": [{
       "name": "saber2pr@gmail.com",
@@ -110,7 +110,7 @@
     }]
   },
   "common": {
-    "footer": "github.com/Saber2pr",
+    "footer": "saber2pr.github.io",
     "tabCur": 1
   }
 }
