@@ -138,5 +138,17 @@ export const KEYWORDS: KeyWords = [
   {
     word: 'constructor',
     color: '#bb75b2'
+  },
+  {
+    word: ':',
+    color: '#bb75b2'
+  },
+  {
+    word: ' = ',
+    color: '#bb75b2'
+  },
+  {
+    word: '===',
+    color: '#bb75b2'
   }
 ]

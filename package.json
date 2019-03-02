@@ -1,10 +1,10 @@
 {
   "name": "saber2pr-page",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "saber2pr's webpage utils.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Saber2pr/saber2pr.git"
+    "url": "git+https://github.com/Saber2pr/saber2pr.github.io.git"
   },
   "author": "saber2pr",
   "license": "ISC",
