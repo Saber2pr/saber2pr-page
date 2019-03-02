@@ -3,12 +3,13 @@ import { IState } from '../../store/IState'
 import { Store$ } from '../../store/store'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { CodeText } from '../utils/codeText'
+import { CodeText, KEYWORDS } from '../utils/codeText'
 import {
   blog_content_state,
   blog_content_del,
   blog_content_index
 } from '../../store/operations'
+import { KeyWords } from '../utils/hightlight'
 
 export interface ContentEnter {
   style: Pick<Blog['style'], 'p' | 'button' | 'pre'>

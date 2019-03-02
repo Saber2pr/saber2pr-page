@@ -1,16 +1,17 @@
 import React, { Props, CSSProperties } from 'react'
 import { Style } from './type'
 import { Para } from './paragraph'
-import { HighLight } from './hightlight'
+import { HighLight, KeyWords } from './hightlight'
 
 export interface CodeText extends Props<any> {
   content: string
   style: Style<'p' | 'pre'>
   start?: string
   end?: string
+  keywords?: KeyWords
 }
 
-const keywords: HighLight['keywords'] = [
+export const KEYWORDS: KeyWords = [
   {
     word: 'const',
     color: '#bb75b2'
@@ -26,10 +27,32 @@ const keywords: HighLight['keywords'] = [
   {
     word: 'from',
     color: '#bb75b2'
+  },
+  {
+    word: 'return',
+    color: '#bb75b2'
+  },
+  {
+    word: 'document',
+    color: '#bb75b2'
+  },
+  {
+    word: '=>',
+    color: '#bb75b2'
+  },
+  {
+    word: 'new',
+    color: '#bb75b2'
   }
 ]
 
-export const CodeText = ({ content, style, start, end }: CodeText) => {
+export const CodeText = ({
+  content,
+  style,
+  start,
+  end,
+  keywords
+}: CodeText) => {
   const { p, pre } = style
   const _start = start || '```ts'
   const _end = end || '```'
@@ -54,7 +77,10 @@ export const CodeText = ({ content, style, start, end }: CodeText) => {
           return [
             <pre>
               <p style={prestyle}>
-                <HighLight content={result[0]} keywords={keywords} />
+                <HighLight
+                  content={result[0]}
+                  keywords={keywords || KEYWORDS}
+                />
               </p>
             </pre>,
             <Para content={result[1]} style={pstyle} />

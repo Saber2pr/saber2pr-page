@@ -1,13 +1,10 @@
+/*
+ * @Author: saber2pr
+ * @Date: 2019-03-02 13:38:59
+ * @Last Modified by: saber2pr
+ * @Last Modified time: 2019-03-02 13:43:06
+ */
 import React, { Props } from 'react'
-
-export function join<T>(array: T[], value: T): T[] {
-  const result: T[] = []
-  for (let i = 0; i < array.length; i++) {
-    result.push(array[i], value)
-  }
-  result.pop()
-  return result
-}
 
 const findKeys = (content: string, keys: string[]) => {
   const record: {
@@ -36,33 +33,30 @@ export type ColorWord = {
   color: string
 }
 
+export type KeyWords = ColorWord[]
+
 export interface HighLight extends Props<any> {
   content: string
-  keywords: ColorWord[]
+  keywords: KeyWords
 }
 
 export const HighLight = ({ content, keywords }: HighLight) => {
   const finded = findKeys(content, keywords.map(k => k.word))
-  const array = content.split(
-    new RegExp(keywords.map(keyword => keyword.word).join('|'))
-  )
-  const ele = array.reduce<JSX.Element[]>(
-    (out, val, index) =>
-      finded[index]
-        ? out.concat(
-            <span>{val}</span>,
-            <span
-              style={{
-                color: keywords.find(
-                  keyword => keyword.word === finded[index].type
-                ).color
-              }}
-            >
-              {finded[index].type}
-            </span>
-          )
-        : out.concat(<span>{val}</span>),
-    []
-  )
-  return <>{ele}</>
+  const findColor = (index: number) =>
+    keywords.find(keyword => keyword.word === finded[index].type).color
+  const array = content
+    .split(new RegExp(keywords.map(keyword => keyword.word).join('|')))
+    .reduce<JSX.Element[]>(
+      (out, val, index) =>
+        finded[index]
+          ? out.concat(
+              <span>{val}</span>,
+              <span style={{ color: findColor(index) }}>
+                {finded[index].type}
+              </span>
+            )
+          : out.concat(<span>{val}</span>),
+      []
+    )
+  return <>{array}</>
 }

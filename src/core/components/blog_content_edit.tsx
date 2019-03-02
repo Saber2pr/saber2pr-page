@@ -13,7 +13,7 @@ export interface Editor {
 const defaultInput: Blog['state']['items'][0] = {
   name: '标题...',
   content: '写新内容...',
-  type: '分类...(输入#号返回下拉菜单)',
+  type: '',
   lastEdit: ''
 }
 
@@ -53,8 +53,11 @@ const back = (blogState: Blog['state']['blogState']) => () =>
 export const ContentEditor = ({ state, style }: Editor) => {
   const { blogState, contentCur, items } = state
   const { button, textarea, p, select, option } = style
+  const types = Array.from(new Set(items.map(i => i.type)))
   const EditContent =
-    blogState === 'view' ? items[contentCur] : Object.assign({}, defaultInput)
+    blogState === 'view'
+      ? items[contentCur]
+      : Object.assign(defaultInput, { type: types[0] })
   const [tInState, setTInState] = useState<'normal' | 'newtype'>('normal')
   const inputcss: CSSProperties = {
     color: textarea.color,
@@ -105,9 +108,9 @@ export const ContentEditor = ({ state, style }: Editor) => {
         onChange={e => (EditContent.type = e.target.value)}
         style={select}
       >
-        {items.map(({ type }) => (
-          <option value={type} style={option}>
-            {type}
+        {types.map(t => (
+          <option value={t} style={option}>
+            {t}
           </option>
         ))}
       </select>
