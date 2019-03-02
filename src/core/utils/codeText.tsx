@@ -16,11 +16,15 @@ const keywords: HighLight['keywords'] = [
     color: '#bb75b2'
   },
   {
-    word: 'const',
+    word: 'export',
     color: '#bb75b2'
   },
   {
-    word: 'const',
+    word: 'import',
+    color: '#bb75b2'
+  },
+  {
+    word: 'from',
     color: '#bb75b2'
   }
 ]
