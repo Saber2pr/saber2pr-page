@@ -6,7 +6,7 @@
  */
 import React, { Props } from 'react'
 
-const findKeys = (content: string, keys: string[]) => {
+export const findKeys = (content: string, keys: string[]) => {
   const record: {
     type: string
     index: number
@@ -50,12 +50,15 @@ export const HighLight = ({ content, keywords }: HighLight) => {
       (out, val, index) =>
         finded[index]
           ? out.concat(
-              <span key={index}>{val}</span>,
-              <span style={{ color: findColor(index) }} key={index}>
+              <span key="jssjy4fpsfemmey5tor">{val}</span>,
+              <span
+                style={{ color: findColor(index) }}
+                key="jssjyad2o7ym9vuerr"
+              >
                 {finded[index].type}
               </span>
             )
-          : out.concat(<span key={index}>{val}</span>),
+          : out.concat(<span key="jssjyjafaimd4jkph76">{val}</span>),
       []
     )
   return <>{array}</>

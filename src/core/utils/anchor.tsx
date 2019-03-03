@@ -15,7 +15,7 @@ const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
     boxShadow: ''
   })
 
-interface Anchor extends Props<any> {
+export interface Anchor extends Props<any> {
   href: string
   name: string
   style: CSSProperties

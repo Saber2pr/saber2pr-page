@@ -9,7 +9,7 @@ export interface Columns extends Props<any> {
   style?: Style<'div'>
 }
 
-const colsplit = (size: number) => ` ${100 / size}% `.repeat(size)
+export const colsplit = (size: number) => ` ${100 / size}% `.repeat(size)
 
 export const Columns = ({ props, children, style = { div: {} } }: Columns) => {
   const size = props.size || 1

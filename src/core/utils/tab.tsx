@@ -31,7 +31,7 @@ export function Tabs<T>({
       {React.Children.map(children, (node, index) => (
         <Button
           style={index === cur ? active.button : unactive.button}
-          key={index}
+          key="jssk8glndd94bj470pn"
           onClick={() => {
             !!onClick ? onClick(index) : null
             update(index)
@@ -43,9 +43,9 @@ export function Tabs<T>({
         />
       ))
         .concat(children[cur] || children)
-        .concat(<hr style={active.hr} key={0} />)
+        .concat(<hr style={active.hr} key="jssk91tow4yu2vi8oor" />)
         .concat(
-          <div style={active.bottom} key={1}>
+          <div style={active.bottom} key="jssk97jyinb1jtq2mu">
             {bottom}
           </div>
         )}
@@ -73,7 +73,7 @@ export const TabV = ({
   const array = React.Children.toArray(children)
   current = current < array.length ? current : array.length - 1
   const tabs = array.map((node, index) => (
-    <div key={index}>
+    <div key="jssk9kdv3ikyxb755fw">
       <Button
         style={index === current ? active.button : unactive.button}
         onClick={() => {
@@ -83,7 +83,6 @@ export const TabV = ({
         activeStyle={active.button}
         unactiveStyle={unactive.button}
         isactive={index === current}
-        key={index}
       />
     </div>
   ))
