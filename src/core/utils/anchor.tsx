@@ -1,5 +1,4 @@
-import React, { Props } from 'react'
-import { Style } from './type'
+import React, { Props, CSSProperties } from 'react'
 import { style } from './style'
 
 export type EventHandle = (
@@ -19,16 +18,15 @@ const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
 interface Anchor extends Props<any> {
   href: string
   name: string
-  style: Style<'a'>
+  style: CSSProperties
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
 export const Anchor = ({ name, href, style, onClick }: Anchor) => {
-  const { a } = style
   return (
     <a
       href={href}
-      style={a}
+      style={style}
       onMouseOver={over}
       onMouseOut={out}
       onClick={onClick}

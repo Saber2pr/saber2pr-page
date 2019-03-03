@@ -1,8 +1,9 @@
-import React, { Props } from 'react'
+import React, { Props, useState } from 'react'
 import { IState } from './store/IState'
 import { Store$ } from './store/store'
 import { tab_index } from './store/operations'
 import { Tabs, Tab } from './core/utils/tab'
+import { Login } from './core/login'
 import { Home } from './core/home'
 import { Project } from './core/project'
 import { Blog } from './core/blog'
@@ -13,14 +14,15 @@ import {
   projectcss,
   aboutcss,
   blogcss,
-  homecss
+  homecss,
+  logincss
 } from './css/css'
 
 interface Application extends Props<any> {
   state: IState
 }
 
-export const Application = ({ state }: Application) => {
+const Page = ({ state }: Application) => {
   const { common, home, blog, project, about } = state
   const { footer, tabCur } = common
   const { div } = globalcss
@@ -48,4 +50,16 @@ export const Application = ({ state }: Application) => {
       </Tabs>
     </div>
   )
+}
+
+export const Application = ({ state }: Application) => {
+  const [statu, setStatu] = useState<'login' | 'logined'>('login')
+  switch (statu) {
+    case 'login':
+      return <Login style={logincss} onSuccess={() => setStatu('logined')} />
+    case 'logined':
+      return <Page state={state} />
+    default:
+      throw new Error('login statu error')
+  }
 }

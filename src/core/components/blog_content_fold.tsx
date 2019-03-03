@@ -26,16 +26,11 @@ const enter = (index: number, tabCur: Blog['state']['tabCur']) => () =>
   )
 
 export const ContentFold = ({ state, style }: FoldNode) => {
-  const { div, hr } = style
+  const { div, hr, a } = style
   const { items, contentCur, tabCur } = state
   const Item = ({ name, index }: { name: string; index: number }) => (
     <div style={div}>
-      <Anchor
-        name={name}
-        href={'#'}
-        style={style}
-        onClick={enter(index, tabCur)}
-      />
+      <Anchor name={name} href={'#'} style={a} onClick={enter(index, tabCur)} />
       <hr style={hr} />
     </div>
   )

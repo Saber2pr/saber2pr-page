@@ -1,5 +1,6 @@
 import React, { Props } from 'react'
 import { Style } from './type'
+import { Input } from './input'
 
 export interface Search<T extends { name: string }> extends Props<any> {
   props: T[]
@@ -9,26 +10,6 @@ export interface Search<T extends { name: string }> extends Props<any> {
 
 export function find<T>(array: T[], rule: (value: T) => boolean) {
   return array.reduce<T[]>((res, n) => (rule(n) ? res.concat(n) : res), [])
-}
-
-const onFocus = (defaultValue: string) => (
-  event: React.FocusEvent<HTMLInputElement>
-) => {
-  if (event.target.value === defaultValue) {
-    event.target.value = ''
-  } else {
-    return
-  }
-}
-
-const onBlur = (defaultValue: string) => (
-  event: React.FocusEvent<HTMLInputElement>
-) => {
-  if (event.target.value === '') {
-    event.target.value = defaultValue
-  } else {
-    return
-  }
 }
 
 export function Search<T extends { name: string }>({
@@ -42,14 +23,5 @@ export function Search<T extends { name: string }>({
   const change = (event: React.ChangeEvent<HTMLInputElement>) =>
     onChange(findProp(event.target.value))
   const defaultValue = '搜索...'
-  return (
-    <input
-      type="text"
-      style={input}
-      onChange={change}
-      onFocus={onFocus(defaultValue)}
-      onBlur={onBlur(defaultValue)}
-      defaultValue={defaultValue}
-    />
-  )
+  return <Input style={input} onChange={change} defaultValue={defaultValue} />
 }

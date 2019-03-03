@@ -14,7 +14,7 @@ export const Link = ({ props, style }: Link) => (
   <>
     {props.map(({ name, href }, index) => (
       <div key={index}>
-        <Anchor name={name} href={href} style={style} key={index} />
+        <Anchor name={name} href={href} style={style.a} key={index} />
       </div>
     ))}
   </>
@@ -26,7 +26,7 @@ export interface LinkImg extends Props<any> {
 }
 
 export const LinkImg = ({ props, style }: LinkImg) => {
-  const { img, p } = style
+  const { img, p, a } = style
   return (
     <>
       <Fold
@@ -35,7 +35,7 @@ export const LinkImg = ({ props, style }: LinkImg) => {
         render={({ name, href, src, infor }, index) => (
           <Columns props={{ size: 3 }} style={style}>
             <div>
-              <Anchor name={name} href={href} style={style} key={index} />
+              <Anchor name={name} href={href} style={a} key={index} />
             </div>
             <div>
               <img src={src} alt={name} style={img} key={index} />
