@@ -1,12 +1,14 @@
 import React, { Props } from 'react'
 import { Anchor } from './anchor'
 import { Columns } from './column'
-import { IState } from '../../store/IState'
 import { Fold } from './fold'
 import { Style } from './type'
 
 export interface Link extends Props<any> {
-  props: IState['home']['websites']
+  props: {
+    name: string
+    href: string
+  }[]
   style: Style<'a'>
 }
 
@@ -21,7 +23,12 @@ export const Link = ({ props, style }: Link) => (
 )
 
 export interface LinkImg extends Props<any> {
-  props: IState['project']
+  props: {
+    name: string
+    href: string
+    src: string
+    infor: string
+  }[]
   style: Style<'a' | 'img' | 'p' | 'div' | 'button'>
 }
 
