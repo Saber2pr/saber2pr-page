@@ -83,6 +83,7 @@ export const TabV = ({
         activeStyle={active.button}
         unactiveStyle={unactive.button}
         isactive={index === current}
+        key={index}
       />
     </div>
   ))

@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-03-02 13:38:59
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-03-02 13:43:06
+ * @Last Modified time: 2019-03-03 14:21:17
  */
 import React, { Props } from 'react'
 
@@ -50,12 +50,12 @@ export const HighLight = ({ content, keywords }: HighLight) => {
       (out, val, index) =>
         finded[index]
           ? out.concat(
-              <span key={0}>{val}</span>,
-              <span style={{ color: findColor(index) }} key={1}>
+              <span key={index}>{val}</span>,
+              <span style={{ color: findColor(index) }} key={index}>
                 {finded[index].type}
               </span>
             )
-          : out.concat(<span key={2}>{val}</span>),
+          : out.concat(<span key={index}>{val}</span>),
       []
     )
   return <>{array}</>

@@ -48,12 +48,12 @@ export const CodeText = ({
           const result = c.split(_end)
           return (
             <span key={index}>
-              <pre>
-                <p style={prestyle}>
+              <pre key={index}>
+                <p style={prestyle} key={index}>
                   <HighLight content={result[0]} keywords={$keywords} />
                 </p>
               </pre>
-              <Para content={result[1]} style={pstyle} />
+              <Para content={result[1]} style={pstyle} key={index} />
             </span>
           )
         } else {
