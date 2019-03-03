@@ -14,8 +14,8 @@ export interface Link extends Props<any> {
 
 export const Link = ({ props, style }: Link) => (
   <>
-    {props.map(({ name, href }) => (
-      <div key="jssjzmjf5ls40k4z34c">
+    {props.map(({ name, href }, index) => (
+      <div key={`jssjzmjf5ls40k4z34c${index}`}>
         <Anchor name={name} href={href} style={style.a} />
       </div>
     ))}
@@ -39,8 +39,12 @@ export const LinkImg = ({ props, style }: LinkImg) => {
       <Fold
         props={props}
         style={style}
-        render={({ name, href, src, infor }) => (
-          <Columns props={{ size: 3 }} style={style} key="jssk1tfl7c1esj7id3e">
+        render={({ name, href, src, infor }, index) => (
+          <Columns
+            props={{ size: 3 }}
+            style={style}
+            key={`jssk1tfl7c1esj7id3e${index}`}
+          >
             <div>
               <Anchor name={name} href={href} style={a} />
             </div>

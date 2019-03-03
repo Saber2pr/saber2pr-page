@@ -43,11 +43,11 @@ export const CodeText = ({
   const $keywords = dedup(keywords || KEYWORDS, 'word')
   return (
     <>
-      {content.split(_start).map(c => {
+      {content.split(_start).map((c, index) => {
         if (c.includes(_end)) {
           const result = c.split(_end)
           return (
-            <span key="jssjw4dghn5i8lnpwxv">
+            <span key={`jssjw4dghn5i8lnpwxv${index}`}>
               <pre>
                 <p style={prestyle}>
                   <HighLight content={result[0]} keywords={$keywords} />
@@ -57,7 +57,13 @@ export const CodeText = ({
             </span>
           )
         } else {
-          return <Para content={c} style={pstyle} key="jssjx2jjjebnh3do7lp" />
+          return (
+            <Para
+              content={c}
+              style={pstyle}
+              key={`jssjx2jjjebnh3do7lp${index}`}
+            />
+          )
         }
       })}
     </>

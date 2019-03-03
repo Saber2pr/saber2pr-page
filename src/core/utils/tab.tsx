@@ -31,7 +31,7 @@ export function Tabs<T>({
       {React.Children.map(children, (node, index) => (
         <Button
           style={index === cur ? active.button : unactive.button}
-          key="jssk8glndd94bj470pn"
+          key={`jssk8glndd94bj470pn${index}`}
           onClick={() => {
             !!onClick ? onClick(index) : null
             update(index)
@@ -73,7 +73,7 @@ export const TabV = ({
   const array = React.Children.toArray(children)
   current = current < array.length ? current : array.length - 1
   const tabs = array.map((node, index) => (
-    <div key="jssk9kdv3ikyxb755fw">
+    <div key={`jssk9kdv3ikyxb755fw${index}`}>
       <Button
         style={index === current ? active.button : unactive.button}
         onClick={() => {

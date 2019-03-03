@@ -50,15 +50,15 @@ export const HighLight = ({ content, keywords }: HighLight) => {
       (out, val, index) =>
         finded[index]
           ? out.concat(
-              <span key="jssjy4fpsfemmey5tor">{val}</span>,
+              <span key={`jssjy4fpsfemmey5tor${index}`}>{val}</span>,
               <span
                 style={{ color: findColor(index) }}
-                key="jssjyad2o7ym9vuerr"
+                key={`jssjyad2o7ym9vuerr${index}`}
               >
                 {finded[index].type}
               </span>
             )
-          : out.concat(<span key="jssjyjafaimd4jkph76">{val}</span>),
+          : out.concat(<span key={`jssjyjafaimd4jkph76${index}`}>{val}</span>),
       []
     )
   return <>{array}</>
