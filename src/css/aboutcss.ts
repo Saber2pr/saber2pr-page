@@ -13,7 +13,7 @@ export const aboutcss: About['style'] = {
     ...globalcss.button,
     border: '1px solid #282a36',
     color: '#2a334d',
-    backgroundColor: '#191a21',
+    backgroundColor: '#252633',
     padding: '',
     marginTop: '30px',
     marginBottom: '20px'
