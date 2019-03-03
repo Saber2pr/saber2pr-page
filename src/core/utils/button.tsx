@@ -18,7 +18,6 @@ const out = (
 
 export interface Button extends Props<any> {
   style?: CSSProperties
-  key?: number
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   name: string
   isactive?: boolean
@@ -28,7 +27,6 @@ export interface Button extends Props<any> {
 
 export const Button = ({
   style,
-  key,
   onClick,
   name,
   isactive,
@@ -37,7 +35,6 @@ export const Button = ({
 }: Button) => (
   <button
     style={style}
-    key={key}
     onClick={onClick}
     onMouseOver={over(activeStyle)}
     onMouseOut={out(activeStyle, unactiveStyle)(isactive)}

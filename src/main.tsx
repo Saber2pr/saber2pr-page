@@ -8,6 +8,8 @@ import { globalcss } from './css/css'
 Store$.subscribe(state =>
   ReactDOM.render(
     <Application state={state} />,
-    style(document.querySelector('body'))(globalcss.body)
+    document.querySelector('#root')
   )
 )
+
+style(document.querySelector('body'))(globalcss.body)
