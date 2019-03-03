@@ -46,14 +46,16 @@ export const CodeText = ({
       {content.split(_start).map((c, index) => {
         if (c.includes(_end)) {
           const result = c.split(_end)
-          return [
-            <pre key={index}>
-              <p style={prestyle}>
-                <HighLight content={result[0]} keywords={$keywords} />
-              </p>
-            </pre>,
-            <Para content={result[1]} style={pstyle} />
-          ]
+          return (
+            <span key={index}>
+              <pre>
+                <p style={prestyle}>
+                  <HighLight content={result[0]} keywords={$keywords} />
+                </p>
+              </pre>
+              <Para content={result[1]} style={pstyle} />
+            </span>
+          )
         } else {
           return <Para content={c} style={pstyle} key={index} />
         }
