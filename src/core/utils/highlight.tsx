@@ -11,20 +11,13 @@ export const findKeys = (content: string, keys: string[]) => {
     type: string
     index: number
   }[] = []
-  const depwalk = (str: string, keys: string[], index = 0) => {
-    if (index === keys.length) {
-      return
-    }
-    const key = keys[index]
-    let start = 0
-    let pos = str.indexOf(key, start)
+  keys.forEach(key => {
+    let pos = content.indexOf(key, 0)
     while (pos !== -1) {
       record.push({ type: key, index: pos })
-      pos = str.indexOf(key, pos + key.length)
+      pos = content.indexOf(key, pos + key.length)
     }
-    depwalk(str, keys, index + 1)
-  }
-  depwalk(content, keys)
+  })
   return record.sort((a, b) => a.index - b.index)
 }
 

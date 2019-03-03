@@ -158,5 +158,13 @@ export const KEYWORDS: KeyWords = [
   {
     word: '===',
     color: '#bb75b2'
+  },
+  {
+    word: '!==',
+    color: '#bb75b2'
+  },
+  {
+    word: 'while',
+    color: '#bb75b2'
   }
 ]
