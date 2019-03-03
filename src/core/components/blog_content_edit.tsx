@@ -108,8 +108,8 @@ export const ContentEditor = ({ state, style }: Editor) => {
         onChange={e => (EditContent.type = e.target.value)}
         style={select}
       >
-        {types.map(t => (
-          <option value={t} style={option}>
+        {types.map((t, index) => (
+          <option value={t} style={option} key={index}>
             {t}
           </option>
         ))}

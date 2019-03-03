@@ -73,10 +73,9 @@ export const TabV = ({
   const array = React.Children.toArray(children)
   current = current < array.length ? current : array.length - 1
   const tabs = array.map((node, index) => (
-    <div>
+    <div key={index}>
       <Button
         style={index === current ? active.button : unactive.button}
-        key={index}
         onClick={() => {
           !!onClick ? onClick(index) : null
         }}

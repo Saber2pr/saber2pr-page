@@ -7,8 +7,10 @@ export interface Para extends Props<any> {
 
 export const Para = ({ content, style }: Para) => (
   <>
-    {content.split('\n').map(line => (
-      <p style={style}>{line}</p>
+    {content.split('\n').map((line, index) => (
+      <p style={style} key={index}>
+        {line}
+      </p>
     ))}
   </>
 )

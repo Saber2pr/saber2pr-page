@@ -40,7 +40,6 @@ export const TabContent = ({ state, style }: Tabs) => {
           items: find(items, v => v.type === t)
         }}
         style={style}
-        key={index}
       />
     </Tab>
   ))
