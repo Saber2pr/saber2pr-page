@@ -8,5 +8,14 @@ export const aboutcss: About['style'] = {
     margin: '30px auto',
     fontSize: '95%'
   },
-  a: globalcss.a
+  a: globalcss.a,
+  button: {
+    ...globalcss.button,
+    border: '1px solid #282a36',
+    color: '#2a334d',
+    backgroundColor: '#191a21',
+    padding: '',
+    marginTop: '30px',
+    marginBottom: '20px'
+  }
 }

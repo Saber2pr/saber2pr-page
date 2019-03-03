@@ -2,12 +2,12 @@ import { IState } from './IState'
 
 export const common_reset = (init?: IState) => (state: IState) => {
   const nextState = Object.assign(state, init || {})
-  nextState.common.tabCur = 0
+  nextState.tabCur = 0
   return nextState
 }
 
 export const tab_index = (index: number) => (state: IState) => {
-  state.common.tabCur = index
+  state.tabCur = index
   return state
 }
 

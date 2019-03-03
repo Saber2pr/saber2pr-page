@@ -109,8 +109,9 @@
       "href": "https://1029985799@qq.com"
     }]
   },
-  "common": {
-    "footer": "saber2pr.github.io",
-    "tabCur": 1
-  }
+  "staticState": {
+    "footer": "saber2pr.github.io"
+  },
+  "tabCur": 1,
+  "login": true
 }

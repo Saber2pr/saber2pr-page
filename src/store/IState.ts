@@ -37,8 +37,9 @@ export interface IState {
       href: string
     }[]
   }
-  common: {
+  staticState: {
     footer: string
-    tabCur: number
   }
+  tabCur: number
+  login: boolean
 }
