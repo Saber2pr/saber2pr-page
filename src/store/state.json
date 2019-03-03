@@ -20,6 +20,11 @@
   },
   "blog": {
     "items": [{
+      "name": "2019-3-3 | 随便写点东西。。。",
+      "content": "    转眼间己经大三了，时间过得真滴快呀。第一次加入github在2018年6月份，刚好暑假前夕。当时在学校参加了一个ai项目的培训（水中机器人控制。。其实也不算很高级的东西。）。\n    项目的负责人（学长）要求每个人安装vs在电脑上，他说项目的代码语言（c++）我们应该学过，所以不会讲太多基础知识，直接讲框架部分（ps：我是机械专业）。\n    我折腾了半天vs环境配置，最后还是有点问题。。。\n    培训后期会进行筛选，通过的人要交100多元费用。最后当然我没去，原因是没钱。。。也担心比赛拿不了奖。事后我感觉还是挺后悔的，电脑上的vs也没舍得卸载。\n    放暑假了，没事做，于是在网上找了几个c++的框架开始学，一个cocos2dx一个qt,还有一个opencv。我先从cocos开始，做了一个安卓小游戏，当时成就感那叫一个高。过程中遇到了无数恶心的bug，靠网上各种搜索解决了。最后对c++这门语言及其厌恶。\n    后来又转向了cocos2d-js，打开了新世界的大门，原来代码还可以写的这么随意！接着接触了cocos creator，并学习到了对我编程学习生涯中影响最为重要的一门语言---typescript。javascript一开使给我带来的是无限的自由，不用再写指针，不用在为空指针异常而烦恼，然而后来发现这门语言有一个致命缺点，它的弱类型将导致后期巨量的代码无法一键重构，这一点上c++还是挺好的。后来接触了typescript，改变了这一切，它既有动态语言的随意，又有静态语言的严谨。\n    暑假开学后，我开始向web前端进击，接触了vue框架，后来相继接触react和angular，最终选择react作为助攻方向，如你所见，现在这个页面就是基于react框架开发的单页面应用。",
+      "type": "随笔",
+      "lastEdit": "2019/3/3 下午9:11:54"
+    }, {
       "name": "style",
       "type": "工具模块",
       "content": "它使用起来会是这样的：\n```ts\nstyle(document.querySelector('body'))({ color: 'blue' })\n```\n即:\n```ts\nstyle(HtmlElement)(CSSProps)\n```\n采用了柯理化的高阶函数来设计，实现如下：\n```ts\nimport { CSSProperties } from 'react'\n\nexport const style = <T>(target: T) => (style: CSSProperties): T => {\n  Object.keys(style).forEach(key => (target['style'][key] = style[key]))\n  return target\n}\n```\n使用Object.keys来获取CSSProps的键数组，然后遍历每个key并取其键值赋给HtmlElement的style中对应的属性。说白了就是合并style到HtmlElement.style中，所以也可以尝试使用Object.assgin。",
