@@ -1,56 +1,73 @@
 import { IState } from './IState'
 
-export const common_reset = (init?: IState) => (state: IState) => {
-  const nextState = Object.assign(state, init || {})
-  nextState.tabCur = 0
-  return nextState
-}
-
-export const tab_index = (index: number) => (state: IState) => {
-  state.tabCur = index
-  return state
-}
-
-export const blog_state_reset = (state: IState) => {
-  state.blog.blogState = 'view'
-  state.blog.contentState = 'out'
-  state.blog.tabCur = 0
-  state.blog.contentCur = 0
-  return state
-}
+export const common_reset = (init?: IState) => (state: IState): IState =>
+  init || {
+    ...state,
+    tabCur: 0
+  }
+export const blog_state_reset = (state: IState): IState => ({
+  ...state,
+  blog: {
+    items: state.blog.items,
+    blogState: 'view',
+    contentState: 'out',
+    tabCur: 0,
+    contentCur: 0
+  }
+})
 
 export const blog_items = (items: IState['blog']['items']) => (
   state: IState
-) => {
-  state.blog.items = items
-  return state
-}
+): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    items: items
+  }
+})
 
 export const blog_content_state = (type: IState['blog']['contentState']) => (
   state: IState
-) => {
-  state.blog.contentState = type
-  return state
-}
+): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    contentState: type
+  }
+})
 
-export const blog_content_index = (index: number) => (state: IState) => {
-  state.blog.contentCur = index
-  return state
-}
+export const blog_content_index = (index: number) => (
+  state: IState
+): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    contentCur: index
+  }
+})
 
-export const blog_content_del = (name: string) => (state: IState) => {
-  state.blog.items = state.blog.items.filter(b => b.name !== name)
-  return state
-}
+export const blog_content_del = (name: string) => (state: IState): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    items: state.blog.items.filter(b => b.name !== name)
+  }
+})
 
 export const blog_state = (type: IState['blog']['blogState']) => (
   state: IState
-) => {
-  state.blog.blogState = type
-  return state
-}
+): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    blogState: type
+  }
+})
 
-export const blog_tab_index = (index: number) => (state: IState) => {
-  state.blog.tabCur = index
-  return state
-}
+export const blog_tab_index = (index: number) => (state: IState): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    tabCur: index
+  }
+})
