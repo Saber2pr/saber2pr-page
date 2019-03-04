@@ -1,6 +1,6 @@
 import { IState } from './IState'
 
-export const common_reset = (init?: IState) => (state: IState): IState =>
+export const state_reset = (init?: IState) => (state: IState): IState =>
   init || {
     ...state,
     tabCur: 0
