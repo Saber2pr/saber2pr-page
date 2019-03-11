@@ -1,10 +1,9 @@
-import React, { Props } from 'react'
-import { Style } from './type'
-import { Input } from './input'
+import React, { Props, CSSProperties } from 'react'
+import { InputList } from './input-list'
 
 export interface Search<T extends { name: string }> extends Props<any> {
   props: T[]
-  style: Style<'input'>
+  style?: CSSProperties
   onChange: (value: T[]) => void
 }
 
@@ -15,13 +14,19 @@ export function find<T>(array: T[], rule: (value: T) => boolean) {
 export function Search<T extends { name: string }>({
   props,
   onChange,
-  style
+  style = {}
 }: Search<T>) {
-  const { input } = style
   const findProp = (keyword: string) =>
     find(props, value => !!value.name.match(keyword))
   const change = (event: React.ChangeEvent<HTMLInputElement>) =>
     onChange(findProp(event.target.value))
   const defaultValue = '搜索...'
-  return <Input style={input} onChange={change} defaultValue={defaultValue} />
+  return (
+    <InputList
+      list={props.map(p => p.name)}
+      style={style}
+      onChange={change}
+      defaultValue={defaultValue}
+    />
+  )
 }

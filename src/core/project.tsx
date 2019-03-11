@@ -18,7 +18,7 @@ export const Project = ({ state, style }: Project) => {
       <Search
         props={Store$.getInitState().project}
         onChange={v => Store$.setState({ project: v })}
-        style={style}
+        style={style.input}
       />
       <Columns props={{ size: 3 }} style={style}>
         <div style={p}>Name</div>

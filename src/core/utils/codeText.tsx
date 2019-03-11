@@ -11,7 +11,7 @@ export const dedup = <T extends Object>(array: T[], key: keyof T): T[] =>
 
 export interface CodeText extends Props<any> {
   content: string
-  style: Style<'p' | 'pre'>
+  style?: Style<'p' | 'pre'>
   start?: string
   end?: string
   keywords?: KeyWords
@@ -19,14 +19,12 @@ export interface CodeText extends Props<any> {
 
 export const CodeText = ({
   content,
-  style,
-  start,
-  end,
+  style = { p: {}, pre: {} },
+  start = '```ts',
+  end = '```',
   keywords
 }: CodeText) => {
   const { p, pre } = style
-  const _start = start || '```ts'
-  const _end = end || '```'
   const commonstyle: CSSProperties = {
     textAlign: 'left'
   }
@@ -43,9 +41,9 @@ export const CodeText = ({
   const $keywords = dedup(keywords || KEYWORDS, 'word')
   return (
     <>
-      {content.split(_start).map((c, index) => {
-        if (c.includes(_end)) {
-          const result = c.split(_end)
+      {content.split(start).map((c, index) => {
+        if (c.includes(end)) {
+          const result = c.split(end)
           return (
             <span key={`jssjw4dghn5i8lnpwxv${index}`}>
               <pre>

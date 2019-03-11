@@ -5,6 +5,7 @@ export const state_reset = (init?: IState) => (state: IState): IState =>
     ...state,
     tabCur: 0
   }
+
 export const blog_state_reset = (state: IState): IState => ({
   ...state,
   blog: {
@@ -23,6 +24,16 @@ export const blog_items = (items: IState['blog']['items']) => (
   blog: {
     ...state.blog,
     items: items
+  }
+})
+
+export const blog_items_reset = (items: IState['blog']['items']) => (
+  state: IState
+): IState => ({
+  ...state,
+  blog: {
+    ...state.blog,
+    items
   }
 })
 
@@ -70,4 +81,11 @@ export const blog_tab_index = (index: number) => (state: IState): IState => ({
     ...state.blog,
     tabCur: index
   }
+})
+
+export const project_reset = (project: IState['project']) => (
+  state: IState
+): IState => ({
+  ...state,
+  project
 })

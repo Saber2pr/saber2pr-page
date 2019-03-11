@@ -5,7 +5,7 @@ import { style } from './style'
 export interface Fold<T> extends Props<any> {
   props: T[]
   maxSize?: number
-  style: Style<'button'>
+  style?: Style<'button'>
   render: (value: T, index: number) => JSX.Element
 }
 
@@ -18,7 +18,12 @@ const out = (button: CSSProperties) => (
   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 ) => style(event.target)(button)
 
-export function Fold<T>({ props, maxSize, style, render }: Fold<T>) {
+export function Fold<T>({
+  props,
+  maxSize,
+  style = { button: {} },
+  render
+}: Fold<T>) {
   const { button } = style
   const [maxsize, setMaxSize] = useState(maxSize || 3)
   const viewprops = props.slice(0, maxsize)

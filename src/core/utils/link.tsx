@@ -29,10 +29,19 @@ export interface LinkImg extends Props<any> {
     src: string
     infor: string
   }[]
-  style: Style<'a' | 'img' | 'p' | 'div' | 'button'>
+  style?: Style<'a' | 'img' | 'p' | 'div' | 'button'>
 }
 
-export const LinkImg = ({ props, style }: LinkImg) => {
+export const LinkImg = ({
+  props,
+  style = {
+    a: {},
+    button: {},
+    div: {},
+    img: {},
+    p: {}
+  }
+}: LinkImg) => {
   const { img, p, a } = style
   return (
     <>

@@ -26,8 +26,8 @@ export interface Button extends Props<any> {
 }
 
 export const Button = ({
-  style,
-  onClick,
+  style = {},
+  onClick = () => {},
   name,
   isactive,
   activeStyle,

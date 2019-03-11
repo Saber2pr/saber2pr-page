@@ -16,6 +16,7 @@ import {
   logincss
 } from './css/css'
 import { Login } from './core/login'
+import { blog_items_reset, project_reset } from './store/operations'
 
 interface Application extends Props<any> {
   state: IState
@@ -33,7 +34,12 @@ export const Application = ({ state }: Application) => {
           unactive={tabscss.unactive}
           bottom={footer}
           current={tabCur}
-          onClick={index => Store$.setState({ tabCur: index })}
+          onClick={index =>
+            Store$.setState({ tabCur: index }).pipe(
+              blog_items_reset(Store$.getInitState().blog.items),
+              project_reset(Store$.getInitState().project)
+            )
+          }
         >
           <Tab name="Home">
             <Home state={home} style={homecss} />

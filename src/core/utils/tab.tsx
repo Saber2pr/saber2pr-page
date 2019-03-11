@@ -10,8 +10,8 @@ export interface TabProps extends Props<any> {
 export const Tab = (props: TabProps) => <div {...props}>{props.children}</div>
 
 export interface Tabs extends Props<any> {
-  unactive: Style<'button' | 'bottom' | 'hr'>
-  active: Style<'button' | 'bottom' | 'hr'>
+  unactive?: Style<'button' | 'bottom' | 'hr'>
+  active?: Style<'button' | 'bottom' | 'hr'>
   bottom?: string
   current?: number
   onClick?: (index: number) => void
@@ -19,8 +19,16 @@ export interface Tabs extends Props<any> {
 
 export function Tabs<T>({
   children,
-  active,
-  unactive,
+  active = {
+    bottom: {},
+    button: {},
+    hr: {}
+  },
+  unactive = {
+    bottom: {},
+    button: {},
+    hr: {}
+  },
   bottom,
   current,
   onClick
@@ -54,8 +62,8 @@ export function Tabs<T>({
 }
 
 export interface TabV extends Props<any> {
-  unactive: Style<'button'>
-  active: Style<'button'>
+  unactive?: Style<'button'>
+  active?: Style<'button'>
   bottom?: string
   col: string
   current?: number
@@ -64,8 +72,12 @@ export interface TabV extends Props<any> {
 
 export const TabV = ({
   children,
-  active,
-  unactive,
+  active = {
+    button: {}
+  },
+  unactive = {
+    button: {}
+  },
   col,
   current,
   onClick

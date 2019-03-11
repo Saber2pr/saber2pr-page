@@ -23,7 +23,7 @@ export const Header = ({ style }: Header) => (
       <Search
         props={Store$.getInitState().blog.items}
         onChange={v => Store$.pipe(blog_items(v))}
-        style={style}
+        style={style.input}
       />
     </div>
   </Columns>

@@ -21,21 +21,25 @@ const onBlur = (defaultValue: string) => (
 }
 
 export interface Input extends Props<any> {
-  style: CSSProperties
+  style?: CSSProperties
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   defaultValue?: string
+  list?: string
 }
 
-export const Input = ({ style, defaultValue, onChange }: Input) => {
-  const _defaultValue = defaultValue || '请输入...'
-  return (
-    <input
-      type="text"
-      style={style}
-      onChange={event => (onChange ? onChange(event) : null)}
-      onFocus={onFocus(_defaultValue)}
-      onBlur={onBlur(_defaultValue)}
-      defaultValue={_defaultValue}
-    />
-  )
-}
+export const Input = ({
+  style = {},
+  defaultValue = '请输入...',
+  onChange,
+  list
+}: Input) => (
+  <input
+    type="text"
+    style={style}
+    onChange={event => (onChange ? onChange(event) : null)}
+    onFocus={onFocus(defaultValue)}
+    onBlur={onBlur(defaultValue)}
+    defaultValue={defaultValue}
+    list={list}
+  />
+)

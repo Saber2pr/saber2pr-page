@@ -18,11 +18,16 @@ const out = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
 export interface Anchor extends Props<any> {
   href: string
   name: string
-  style: CSSProperties
+  style?: CSSProperties
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
-export const Anchor = ({ name, href, style, onClick }: Anchor) => {
+export const Anchor = ({
+  name,
+  href,
+  style = {},
+  onClick = () => {}
+}: Anchor) => {
   return (
     <a
       href={href}
