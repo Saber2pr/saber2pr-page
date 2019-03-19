@@ -22,4 +22,6 @@ Ajax('/src/store/state.json')
   )
 
 // post data to server
-Store$.subscribe(data => Ajax('/src/store/state.json', JSON.stringify(data)))
+Store$.subscribe(data =>
+  Ajax('/src/store/state.json', JSON.stringify(data)).catch(() => void 0)
+)
