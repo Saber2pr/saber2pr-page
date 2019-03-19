@@ -14,17 +14,12 @@ Ajax('/src/store/state.json')
       blog_state_reset
     )
   )
-  .catch(err => {
-    console.warn('connect server fail!', err)
+  .catch(() =>
     Store$.pipe(
       state_reset(),
       blog_state_reset
     )
-  })
+  )
 
 // post data to server
-Store$.subscribe(data => {
-  Ajax('/src/store/state.json', JSON.stringify(data))
-    .then(() => console.log('post ok!'))
-    .catch(err => console.warn('post fail!', err))
-})
+Store$.subscribe(data => Ajax('/src/store/state.json', JSON.stringify(data)))
