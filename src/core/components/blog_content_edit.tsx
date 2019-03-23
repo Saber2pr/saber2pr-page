@@ -3,7 +3,11 @@ import { IState } from '../../store/IState'
 import { Store$ } from '../../store/store'
 import { Blog } from '../blog'
 import { Button } from '../utils/button'
-import { blog_content_state, blog_state } from '../../store/operations'
+import {
+  blog_content_state,
+  blog_state,
+  blog_content_save
+} from '../../store/operations'
 
 export interface Editor {
   style: Pick<Blog['style'], 'button' | 'textarea' | 'p' | 'select' | 'option'>
@@ -18,26 +22,11 @@ const defaultInput: Blog['state']['items'][0] = {
 }
 
 const save = (
-  blogState: Blog['state']['blogState'],
-  EditContent: Blog['state']['items'][0]
+  blogState: IState['blog']['blogState'],
+  EditContent: IState['blog']['items'][0]
 ) => () =>
   Store$.pipe(
-    data => {
-      if (blogState === 'new') {
-        if (data.blog.items.find(b => b.name === EditContent.name)) {
-          alert('标题名已存在！')
-        } else {
-          data.blog.tabCur = 0
-          EditContent.lastEdit = new Date().toLocaleString()
-          data.blog.items.unshift(EditContent)
-        }
-      } else if (blogState === 'view') {
-        const index = data.blog.items.map(b => b.name).indexOf(EditContent.name)
-        EditContent.lastEdit = new Date().toLocaleString()
-        data.blog.items[index] = EditContent
-      }
-      return data
-    },
+    blog_content_save(blogState, EditContent),
     blog_content_state('enter'),
     blog_state('view')
   )

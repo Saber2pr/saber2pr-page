@@ -20,8 +20,4 @@ Ajax('/src/store/state.json')
       blog_state_reset
     )
   )
-
-// post data to server
-Store$.subscribe(data =>
-  Ajax('/src/store/state.json', JSON.stringify(data)).catch(() => void 0)
-)
+;(<any>window)._Store$ = Store$
