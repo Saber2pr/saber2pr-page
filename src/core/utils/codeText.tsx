@@ -35,8 +35,7 @@ export const CodeText = ({
   const prestyle: CSSProperties = {
     ...pre,
     ...commonstyle,
-    overflow: 'scroll',
-    overflowY: 'hidden'
+    overflowX: 'auto'
   }
   const $keywords = dedup(keywords || KEYWORDS, 'word')
   return (
@@ -163,6 +162,18 @@ export const KEYWORDS: KeyWords = [
   },
   {
     word: 'while',
+    color: '#bb75b2'
+  },
+  {
+    word: 'type',
+    color: '#bb75b2'
+  },
+  {
+    word: 'typeof',
+    color: '#bb75b2'
+  },
+  {
+    word: 'this',
     color: '#bb75b2'
   }
 ]
