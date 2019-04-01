@@ -26,7 +26,8 @@ export const CodeText = ({
     pre: {
       backgroundColor: '#282c34',
       color: 'white',
-      borderRadius: '10px'
+      borderRadius: '10px',
+      padding: '10px'
     }
   },
   start = '```ts\n',
