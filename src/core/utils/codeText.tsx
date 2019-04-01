@@ -29,7 +29,7 @@ export const CodeText = ({
       borderRadius: '10px'
     }
   },
-  start = '```ts',
+  start = '```ts\n',
   end = '```',
   keywords
 }: CodeText) => {
