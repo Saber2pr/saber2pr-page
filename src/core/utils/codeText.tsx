@@ -1,5 +1,4 @@
 import React, { Props, CSSProperties } from 'react'
-import { Style } from './type'
 import { Para } from './paragraph'
 import { HighLight, KeyWords } from './highlight'
 
@@ -11,7 +10,10 @@ export const dedup = <T extends Object>(array: T[], key: keyof T): T[] =>
 
 export interface CodeText extends Props<any> {
   content: string
-  style?: Style<'p' | 'pre'>
+  style?: {
+    p?: CSSProperties
+    pre?: CSSProperties
+  }
   start?: string
   end?: string
   keywords?: KeyWords
@@ -19,7 +21,14 @@ export interface CodeText extends Props<any> {
 
 export const CodeText = ({
   content,
-  style = { p: {}, pre: {} },
+  style = {
+    p: {},
+    pre: {
+      backgroundColor: '#282c34',
+      color: 'white',
+      borderRadius: '10px'
+    }
+  },
   start = '```ts',
   end = '```',
   keywords
