@@ -2,8 +2,6 @@
 
 [![npm](https://img.shields.io/npm/v/saber2pr-page.svg?color=blue)](https://www.npmjs.com/package/saber2pr-page)
 
-> saber2pr's webpage. [view](https://saber2pr.github.io/)
-
 ```bash
 # from npm
 npm install saber2pr-page
